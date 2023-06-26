@@ -1,0 +1,163 @@
+
+.App {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100vw;
+  min-height: 100vh;
+  max-height: 100vh;
+  background-color: #232323;
+}
+
+.App-main-left {
+  width: 16%;
+  height: 100vh;
+  max-height: 100vh;
+  background-color: #232323;
+  position: relative;
+  /* position: fixed; */
+}
+
+.App-main-left.closed {
+  transform: translateX(-100%);
+}
+
+.App-main-right {
+  flex-grow: 1;
+  width: 84%;
+  min-height: 100vh;
+  max-height: 100vh;
+  background-color: #151515;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* overflow-y: auto; */
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.App-main-right::-webkit-scrollbar {
+  display: none;
+}
+
+.App-main-right.full-width {
+  width: 100%;
+}
+
+.sidebar-open-btn {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: transparent;
+  border: none;
+  color: #ffffffcf;
+  padding: 0.3rem 0.4rem;
+}
+
+.sidebar-open-btn:hover {
+  transform: scale(1.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.App-main-right-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 0.5rem;
+  /* border: 1px solid red; */
+}
+
+.App-main-output {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  width: 90%;
+  /* border: 1px solid red; */
+}
+
+.App-main-output-content {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 4rem;
+  margin-top: .5rem;
+  padding-bottom: 5rem;
+  width: 100%;
+}
+
+.App-main-output-content-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  min-width: 10em;
+  max-width: 12em;
+}
+
+.App-main-output-content-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 50em;
+}
+
+.App-main-right-header-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #ccc;
+  margin-top: .5rem;
+}
+
+.App-main-right-header-title-span {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #eee;
+  margin-left: 0.3rem;
+}
+
+.App-main-footer {
+  align-self: flex-end;
+  justify-self: flex-end;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 0rem;
+  margin-top: 1rem;
+  position: sticky;
+  bottom: 0;
+}
+
+.App-main-footer-text {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #ccc;
+  opacity: 0.6;
+  margin-top: -.5rem;
+}
+
+@media (max-width: 768px) {
+  .App-main-left {
+    display: none;
+    width: 100%;
+    height: 20vh;
+  }
+
+  .App-main-right {
+    position: absolute;
+    left: 0;
+    width: 100%;
+  }
+}

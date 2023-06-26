@@ -1,0 +1,194 @@
+.App-main-right-examples {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    gap: 0.2rem;
+    padding-left: 0.5rem;
+    /* margin-bottom: 15.5rem; */
+    margin-top: 1rem;
+}
+  
+.App-main-right-examples-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #eeeeeecf;
+    margin-bottom: 1rem;
+}
+  
+.App-main-right-examples-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    gap: .8rem;
+    margin-top: .2rem;
+    margin-bottom: 1rem;
+}
+  
+.feather-chevron-right {
+    width: 1.4rem;
+    height: 1.4rem;
+    stroke-width: 2.3;
+    color: #eee;
+}
+
+.examples-button {
+    background: #4b6199;
+    color: white;
+    font-family: inherit;
+    padding: 0.3em;
+    padding-left: 1.2em;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 0.9em;
+    border: none;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    box-shadow: 0em 1em 3em #7497F334, 0em 0.4em 0.6em #000000c0;
+    overflow: hidden;
+    position: relative;
+    height: 2.8em;
+    width: 30em;
+    padding-right: 3.3em;
+    transition: all .1s ease-in-out;
+}
+
+/* remove shadow when hovering over examples-button */
+.examples-button:hover {
+    box-shadow: 0em 1em 3em #7497F364, 0em 0.4em 0.6em #000000f0;
+    transform: translateY(-0.2em);
+}
+  
+.examples-button .icon {
+    background: #333;
+    margin-left: 1em;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.2em;
+    width: 2.2em;
+    border-radius: 0.7em;
+    box-shadow: 0.1em 0.1em 0.6em 0.2em #7497F364;
+    right: 0.3em;
+    transition: all .5s;
+}
+  
+.examples-button:hover .icon {
+    width: calc(100% - 0.6em);
+}
+  
+.examples-button .icon svg {
+    width: 1.1em;
+    transition: transform .5s;
+    color: #ddd;
+}
+  
+.examples-button:hover .icon svg {
+    transform: translateX(0.1em);
+}
+  
+.examples-button:active .icon {
+    transform: scale(0.95);
+}
+
+.icon-btn {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #333;
+    background: #4b6199;
+    border-radius: 25px;
+    overflow: hidden;
+    position: relative;
+    transition: width 0.2s ease-in-out;
+    font-weight: 500;
+    font-family: inherit;
+    box-shadow: 0em 1em 3em #7497F334, 0em 0.4em 0.6em #000000c0;
+}
+
+.add-btn:hover {
+    width: 120px;
+}
+  
+.add-btn::before,
+.add-btn::after {
+    transition: width 0.2s ease-in-out, border-radius 0.2s ease-in-out;
+    content: "";
+    position: absolute;
+    height: 3px;
+    width: 13px;
+    top: calc(50% - 1.5px);
+    background: #ddd;  
+}
+  
+.add-btn::after {
+    right: 14px;
+    overflow: hidden;
+}
+  
+.add-btn::before {
+    left: 14px;
+}
+  
+.icon-btn:focus {
+    outline: none;
+}
+  
+.btn-txt {
+    color: #ddd;
+    font-size: 1.1rem;
+    font-weight: 500;
+    /* padding: 1rem 0rem; */
+
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+  
+.add-btn:hover::before,
+.add-btn:hover::after {
+    width: 5%;
+    /* border-radius: 2px; */
+    background: transparent;
+}
+  
+.add-btn:hover .btn-txt {
+    opacity: 1;
+}
+  
+.add-icon::after,
+.add-icon::before {
+    transition: all 0.2s ease-in-out;
+    content: "";
+    position: absolute;
+    height: 16px;
+    width: 3px;
+    top: calc(50% - 8px);
+    background: white;
+    overflow: hidden;
+}
+  
+.add-icon::before {
+    left: 10px;
+    background: transparent;
+}
+  
+.add-icon::after {
+    right: 17px;
+}
+  
+.add-btn:hover .add-icon::before {
+    left: 27px;
+    height: 4px;
+    top: calc(50% - 2px);
+}
+  
+.add-btn:hover .add-icon::after {
+    right: 22px;
+    height: 4px;
+    top: calc(50% - 2px);
+    background: transparent;
+}

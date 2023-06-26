@@ -1,0 +1,230 @@
+.steps-outer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.1rem;
+    background: #2a2a2a91;
+    backdrop-filter: blur(100px);
+    padding: 1rem 1.2rem;
+    width: 100%;
+    min-height: 10em;
+    border-radius: 15px;
+    box-shadow: 0 10px 10px rgba(0,0,0,0.2);
+    overflow: hidden;
+}
+
+.steps-title {
+    margin-top: 0;
+    align-self: flex-start;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #eeeeeeaf;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.step {
+    width: 100%;
+}
+
+.steps-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: .5rem;
+    position: relative;
+}
+
+.step-outer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.5rem 0.5rem;
+    border-radius: 0.5rem;
+    position: relative;
+    z-index: 1;
+    transition: background-color 0.3s ease;
+}
+
+.step-outer:hover {
+    background-color: #444444;
+    cursor: pointer;
+}
+
+.step-outer:hover .copy-icon {
+    display: block;
+}
+
+.copy-icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    position: absolute; 
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.copy-icon {
+    display: none;
+    cursor: pointer;
+    color: #eeeeeeaf;
+    /* color: #4b6199; */
+    z-index: 2;
+    width: 1.2rem;
+    position: absolute;
+}
+
+.step-outer-active {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.5rem 0.5rem;
+    border-radius: 0.5rem;
+    background-color: #333333;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 3px 5px #0000005f;
+    transition: box-shadow 0.3s ease;
+}
+
+.step-outer-active:hover {
+    box-shadow: 0 5px 10px #0000005f;
+    cursor: pointer;
+}
+
+.step-outer-active-files {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.8rem 0.8rem;
+    border-radius: 0.5rem;
+    background-color: #333333;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 3px 5px #0000005f;
+    position: relative;
+}
+
+.status-circle {
+    width: .8rem;
+    height: .8rem;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+}
+
+.status-circle.active {
+    background-color: #6584d5;
+    box-shadow: 0 0 5px #6584d5, 0 0 10px #6584d5, 0 0 15px #6584d5;
+}
+
+.status-circle.inactive {
+    background-color: #888;
+    box-shadow: 0 0 5px #000000af;
+}
+
+.status-circle.complete {
+    background-color: #51ab60;
+    box-shadow: 0 0 5px #51ab60, 0 0 10px #51ab60, 0 0 15px #51ab60;
+}
+
+.status-circle.loading {
+    background-color: #6584d5;
+    box-shadow: 0 0 5px #6584d5, 0 0 10px #6584d5, 0 0 15px #6584d5;
+    /* pulse back */
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.step-text {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #eeeeeedf;
+}
+
+.step-text-faded {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #eeeeeedf;
+    opacity: 0.7;
+}
+
+.active {
+    font-weight: 600;
+}
+
+.step-arrow {
+    position: absolute;
+    right: 0.4rem;
+    color: #6584d5;
+    width: 1.5rem;
+    stroke-width: 4.5;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 5px #6584d55f, 0 0 10px #6584d55f, 0 0 15px #6584d55f;
+        transform: scale(1);
+    }
+    50% {
+        box-shadow: 0 0 10px #6584d5, 0 0 20px #6584d5, 0 0 30px #6584d5, 0 0 5px #6584d5;
+        transform: scale(1.03);
+    }
+    100% {
+        box-shadow: 0 0 5px #6584d55f, 0 0 10px #6584d55f, 0 0 15px #6584d55f;
+        transform: scale(1);
+    }
+}
+
+.status-circle.loading {
+    animation: pulse 2s infinite;
+}
+
+.copy-alert {
+    position: fixed;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4b6199;
+    color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    animation: slide-up 0.5s forwards, slide-down 0.5s 2.5s forwards;
+    visibility: hidden;
+    z-index: 100;
+}
+
+@keyframes slide-up {
+    0% {
+        transform: translateX(-50%) translateY(100%);
+        visibility: visible;
+    }
+    100% {
+        transform: translateX(-50%) translateY(0);
+        visibility: visible;
+    }
+}
+
+@keyframes slide-down {
+    0% {
+        transform: translateX(-50%) translateY(0);
+        visibility: visible;
+    }
+    100% {
+        transform: translateX(-50%) translateY(100%);
+        visibility: hidden;
+    }
+}

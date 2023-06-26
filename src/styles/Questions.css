@@ -1,0 +1,286 @@
+.App-main-right-questions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #2a2a2a91;
+    box-shadow: 0 10px 10px rgba(0,0,0,0.2);
+    border-radius: 1rem;
+    padding: .1em .75em;
+    padding-top: .5em;
+    width: 102.5%;
+    height: 100%;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    gap: 0.2rem;
+}
+
+.App-main-right-questions-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    overflow-y: hidden;
+    /* margin-top: -.2rem; */
+    margin-bottom: .1rem;
+}
+
+.App-main-right-questions-header-title {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #eee;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.App-main-right-questions-header-title-project-name {
+    margin-top: 0;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #eeeeeecf;
+    text-transform: uppercase;
+}
+
+.App-main-right-questions-header-title-text {
+    margin-top: 0;
+    opacity: 0.6;
+    align-self: flex-end;
+    justify-self: flex-end;
+    font-size: 1.2rem;
+    margin-left: 0.5rem;
+}
+
+.App-main-right-questions-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    width: 100%;
+    height: 100%;
+    margin-top: 0rem;
+    max-height: 33em;
+    overflow-y: auto;
+    overflow-x: hidden;
+    /* hide scroll bars */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.App-main-right-questions-buttons::-webkit-scrollbar {
+    display: none;
+}
+
+.App-main-right-questions-buttons-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 99%;
+    height: 100%;
+    gap: 1rem;
+    background-color: transparent;
+    /* padding-bottom: 1rem; */
+    position: relative;
+}
+
+/* .App-main-right-questions-button-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.4rem .4rem;
+    font-size: 1.5rem;
+    font-weight: 400;
+    border-radius: 50%;
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+}
+
+.feather-x {
+    width: 1.5rem;
+    height: 1.5rem;
+    stroke-width: 3.5;
+    color: #EA807E;
+} */
+
+.App-main-right-questions-buttons-title {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #eee;
+    width: 100%;
+    text-align: left;
+    white-space: pre-wrap;
+    padding-bottom: 0.5rem;
+}
+
+.App-main-right-questions-buttons-line {
+    width: 100%;
+    height: 0.1rem;
+    background-color: #eeeeee2f;
+    margin-bottom: -1rem;
+}
+
+.App-main-right-questions-possible-answers {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 100%;
+    width: 100%;
+    gap: .5rem;
+    margin-top: -1.5rem;
+}
+
+.App-main-right-questions-detailed-answer-title {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #eeeeee5f;
+    width: 100%;
+    height: 2.5rem;
+    text-align: left;
+    padding-left: 1rem;
+    white-space: pre-wrap;
+    margin-bottom: -2.9rem;
+    margin-top: .5rem;
+}
+
+.App-main-right-questions-detailed-answer {
+    margin-top: 1rem;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #eee;
+    width: 95%;
+    background-color: #555555;
+    border: none;
+    border-radius: .5rem;
+    padding: .5rem 1rem;
+    padding-left: .5rem;
+    font-family: 'Roboto', sans-serif;
+}
+
+.App-main-right-questions-detailed-answer::placeholder {
+    color: #eeeeeeaf;
+}
+
+.App-main-right-questions-detailed-answer:focus {
+    outline: none;
+    border-bottom: 2px solid #6584d5;
+}
+
+.questions-button {
+    background: #5671b3;
+    color: white;
+    font-family: inherit;
+    padding: 0.5em 1.5em;
+    font-size: 1.2rem;
+    font-weight: 500;
+    border-radius: .5em;
+    border: none;
+    letter-spacing: 0.05em;
+}
+
+.questions-button:hover {
+    cursor: pointer;
+    background: #4e6ac4;
+}
+  
+.questions-button .icon {
+    background: #444;
+    margin-left: 1em;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.2em;
+    width: 2.2em;
+    border-radius: 0.7em;
+    box-shadow: 0.1em 0.1em 0.6em 0.2em #7497F364;
+    right: 0.3em;
+    transition: all .5s;
+}
+  
+.questions-button:hover .icon {
+    width: calc(100% - 0.6em);
+}
+  
+.questions-button .icon svg {
+    width: 1.1em;
+    transition: transform .5s;
+    color: #fff;
+}
+  
+.questions-button:hover .icon svg {
+    transform: translateX(0.1em);
+}
+  
+.questions-button:active .icon {
+    transform: scale(0.95);
+}
+
+.App-main-right-questions-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    backdrop-filter: blur(100px);
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    margin-top: 2%;
+}
+
+.App-main-right-questions-footer-button {
+    background: #516aab;
+    color: white;
+    font-family: inherit;
+    padding: 0.35em;
+    padding-left: 1em;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border-radius: 0.9em;
+    border: none;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    box-shadow: inset 0 0 1.6em -0.6em #7497F364;
+    overflow: hidden;
+    position: relative;
+    height: 2.5em;
+    padding-right: 4.5em;
+}
+  
+.App-main-right-questions-footer-button .icon {
+    background: #444;
+    margin-left: 1em;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.2em;
+    width: 2.2em;
+    border-radius: 0.7em;
+    box-shadow: 0.1em 0.1em 0.6em 0.2em #7497F364;
+    right: 0.3em;
+    transition: all .5s;
+}
+  
+.App-main-right-questions-footer-button:hover .icon {
+    width: calc(100% - 0.6em);
+}
+  
+.App-main-right-questions-footer-button .icon svg {
+    width: 1.1em;
+    transition: transform .5s;
+    color: #fff;
+}
+  
+.App-main-right-questions-footer-button:hover .icon svg {
+    transform: translateX(0.1em);
+}
+  
+.App-main-right-questions-footer-button:active .icon {
+    transform: scale(0.95);
+}
