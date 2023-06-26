@@ -84,29 +84,8 @@
     height: 100%;
     gap: 1rem;
     background-color: transparent;
-    /* padding-bottom: 1rem; */
     position: relative;
 }
-
-/* .App-main-right-questions-button-close {
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 0.4rem .4rem;
-    font-size: 1.5rem;
-    font-weight: 400;
-    border-radius: 50%;
-    color: #fff;
-    align-items: center;
-    justify-content: center;
-}
-
-.feather-x {
-    width: 1.5rem;
-    height: 1.5rem;
-    stroke-width: 3.5;
-    color: #EA807E;
-} */
 
 .App-main-right-questions-buttons-title {
     font-size: 1.3rem;
