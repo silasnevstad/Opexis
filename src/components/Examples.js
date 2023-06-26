@@ -32,10 +32,11 @@ const Examples = ({ onSetup }) => {
                     </button>
                 ))}
             </div>
-            <button className="icon-btn add-btn" onClick={onLoadMore}>
-                <div className="add-icon"></div>
-                <div className="btn-txt">Load More</div>
-            </button>
+            {randomExamples.length < 8 && 
+                <button className="icon-btn add-btn" onClick={onLoadMore}>
+                    <div className="add-icon"></div>
+                    <div className="btn-txt">Load More</div>
+                </button>}
         </div>
     )
 }

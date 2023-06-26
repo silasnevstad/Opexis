@@ -176,6 +176,7 @@ function AppContent() {
     newProject.currentState = 'generate';
     setProjects([...projects.slice(0, activeProjectIndex), newProject, ...projects.slice(activeProjectIndex + 1)]);
     const response = await run(newProject.messages, answersString || '');
+    console.log(response);
 
     if (response.type === 'function_call') {
       updateProjectState('generate', {
@@ -191,9 +192,16 @@ function AppContent() {
   };
 
   const onCodeNext = async () => {
+    if (!projects[activeProjectIndex].outputFiles || !input) {
+      return;
+    }
     setLoading(true);
 
     const codeString = parseCodeToString(projects[activeProjectIndex].outputFiles);
+    if (!codeString) {
+      setLoading(false);
+      return;
+    }
 
     const newProject = projects[activeProjectIndex];
     newProject.finishedState = 'generate';
@@ -233,6 +241,7 @@ function AppContent() {
   }
 
   const handleLogin = async (email, password) => {
+    setProjects([]);
     const res = await signIn(email, password);
     if (res.success) {
       setSignUpModalOpen(false);

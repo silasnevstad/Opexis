@@ -3,9 +3,79 @@ import { UserContext } from '../context/UserContext';
 import { UIContext } from '../context/UIContext';
 import '../styles/SignUpModal.css'
 
+const AccountPage = ({ userEmail, handleLogout }) => {
+    return (
+        <div className="big-modal-content">
+            <div className="big-modal-header">
+                <div className="big-modal-header-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                    Account
+                </div>
+            </div>
+            <div className="big-modal-body">
+                <div className="big-field-container">
+                    <div className="big-modal-body-text">
+                        {/* <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg> */}
+                        {userEmail}
+                    </div>
+                </div>
+            </div>
+            <div className="big-modal-footer">
+                <button className="small-modal-button" onClick={handleLogout}>Logout</button>
+            </div>
+        </div>
+    )
+}
+
+const PreferencesPage = ({ userApiKey, settingApiKey, setSettingApiKey, apiKey, setApiKey, handleConfirm }) => {
+    const toggleSettingApiKey = () => {
+        setSettingApiKey(!settingApiKey);
+    }
+
+    return (
+        <div className="big-modal-content">
+            <div className="big-modal-header">
+                <div className="big-modal-header-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-settings"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                    Preferences
+                </div>
+            </div>
+            <div className="big-modal-body">
+                {settingApiKey ?
+                    <div className="input-field-container" style={{ marginBottom: '20px', marginTop: '20px' }}>
+                        <input
+                            type={'text'}
+                            id={"api-key"}
+                            placeholder=""
+                            value={apiKey}
+                            onChange={(e) => setApiKey(e.target.value)}
+                            className={!apiKey ? '' : 'non-empty'}
+                        />
+                        <label htmlFor={"api-key"}>Set API Key</label>
+                    </div>
+                    :
+                    <p className="small-modal-body-text">{userApiKey === "" ? 'No API Key set' : `${userApiKey}`}</p>
+                }
+            </div>
+            <div className="big-modal-footer">
+                {settingApiKey ?
+                    <>
+                        <button className="small-modal-button-close" onClick={toggleSettingApiKey}>Cancel</button>
+                        <button className="small-modal-button" onClick={handleConfirm}>Save</button>
+                    </>
+                    :
+                    <button className="small-modal-button" onClick={toggleSettingApiKey}>Set API Key</button>
+                }
+
+            </div>
+        </div>
+    )
+}
+
 const AccountModal = ({ handleLogout }) => {
     const { userApiKey, userEmail, setUserApiKey } = useContext(UserContext);
-    const { accountModalOpen, setAccountModalOpen } = useContext(UIContext);
+    const { setAccountModalOpen } = useContext(UIContext);
+    const [curentPage, setCurrentPage] = useState('account');
     const [settingApiKey, setSettingApiKey] = useState(false);
     const [apiKey, setApiKey] = useState('');
 
@@ -16,52 +86,28 @@ const AccountModal = ({ handleLogout }) => {
                 return;
             }
             setUserApiKey(apiKey);
+            setSettingApiKey(false);
         } else {
             setSettingApiKey(true);
         }
     }
 
+    const handleChangePage = (page) => {
+        setCurrentPage(page);
+        setSettingApiKey(false);
+    }
+
     return (
-        <div className={`small-modal ${accountModalOpen ? 'open' : ''}`}>
-            <button className='small-close-button' type="button" onClick={() => setAccountModalOpen(false)}>
-                <span className="small-close-button-text">×</span>
-            </button>
-            <div className="small-modal-content">
-                <div className="small-modal-header">
-                    <h4 className="small-modal-title">{settingApiKey ? 'API Key' : 'Account'}</h4>
-                </div>
-                <div className="small-modal-body">
-                    {settingApiKey ?
-                        <div className="input-field-container" style={{ marginBottom: '20px', marginTop: '20px' }}>
-                            <input
-                                type={'text'}
-                                id={"api-key"}
-                                placeholder=""
-                                value={apiKey}
-                                onChange={(e) => setApiKey(e.target.value)}
-                                className={!apiKey ? '' : 'non-empty'}
-                            />
-                            <label htmlFor={"api-key"}>Set API Key</label>
-                        </div>
-                        :
-                        <div className="input-field-container">
-                            <p className="small-modal-body-text">{userEmail}</p>
-                            {userApiKey ? 
-                                <span style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                                    <p className="small-modal-body-text">{userApiKey ? `API Key ` : 'No API Key set'}</p>
-                                    {!settingApiKey && userApiKey && <p className="small-modal-body-text bold">{`...${userApiKey.slice(-4)}`}</p>}
-                                </span>
-                                :
-                                <p className="small-modal-body-text">No API Key set</p>
-                            }
-                        </div>
-                    }
-                </div>
-                <div className="small-modal-footer">
-                    <button className="small-modal-button redwhitehover" onClick={handleLogout}>{settingApiKey ? 'Cancel' : 'Log Out'}</button>
-                    <button className="small-modal-button green" onClick={handleConfirm}>{settingApiKey ? 'Save' : 'Set API Key'}</button>
-                </div>
-                {/* <p className="small-modal-footer-text" onClick={() => setLogginIn(!logginIn)}>{logginIn ? 'Don\'t have an account? Sign up' : 'Already have an account? Log in'}</p> */}
+        <div className="big-modal">
+            <div className="big-modal-left">
+                <h1 className={curentPage === 'account' ? "big-modal-title active" : "big-modal-title"} onClick={() => handleChangePage('account')}>Account</h1>
+                <p className={curentPage === 'preferences' ? "big-modal-title active" : "big-modal-title"} onClick={() => handleChangePage('preferences')}>Preferences</p>
+            </div>
+            <div className="big-modal-right">
+                <button className='big-close-button'type="button" onClick={() => setAccountModalOpen(false)}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+                {curentPage === 'account' ? <AccountPage userEmail={userEmail} handleLogout={handleLogout} /> : <PreferencesPage userApiKey={userApiKey} settingApiKey={settingApiKey} setSettingApiKey={setSettingApiKey} apiKey={apiKey} setApiKey={setApiKey} handleConfirm={handleConfirm} />}
             </div>
         </div>
     );

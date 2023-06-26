@@ -13,6 +13,7 @@
     overflow-y: hidden;
     overflow-x: hidden;
     gap: 0.2rem;
+    position: relative;
 }
 
 .App-main-right-questions-header {
@@ -24,6 +25,8 @@
     height: 100%;
     overflow-y: hidden;
     /* margin-top: -.2rem; */
+    /* padding-bottom: 4rem; */
+    /* padding-right: 1rem; */
     margin-bottom: .1rem;
 }
 
@@ -108,26 +111,47 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     max-width: 100%;
-    width: 100%;
+    width: 90%;
     gap: .5rem;
     margin-top: -1.5rem;
+}
+
+.App-main-right-questions-divider {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    width: 80%;
+}
+
+.App-main-right-questions-divider-line {
+    /* width: 50rem; */
+    width: 100%;
+    height: 0.1rem;
+    background-color: #eeeeee1f;
+    margin: 0;
+}
+
+.App-main-right-questions-divider-text {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #eeeeee4f;
 }
 
 .App-main-right-questions-detailed-answer-title {
     font-size: 1.1rem;
     font-weight: 500;
-    color: #eeeeee5f;
+    color: #eeeeee5a;
     width: 100%;
     height: 2.5rem;
     text-align: left;
-    padding-left: 1rem;
     white-space: pre-wrap;
     margin-bottom: -2.9rem;
     margin-top: .5rem;
 }
 
 .App-main-right-questions-detailed-answer {
-    margin-top: 1rem;
     font-size: 1.4rem;
     font-weight: 500;
     color: #eee;
@@ -136,7 +160,6 @@
     border: none;
     border-radius: .5rem;
     padding: .5rem 1rem;
-    padding-left: .5rem;
     font-family: 'Roboto', sans-serif;
 }
 
@@ -153,17 +176,23 @@
     background: #5671b3;
     color: white;
     font-family: inherit;
-    padding: 0.5em 1.5em;
-    font-size: 1.2rem;
-    font-weight: 500;
-    border-radius: .5em;
+    padding: 0.4em;
+    padding-left: 1.2em;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 0.9em;
     border: none;
+    text-align: center;
     letter-spacing: 0.05em;
+    box-shadow: 0em 1em 3em #7497F334, 0em 0.4em 0.6em #000000c0;
+    min-height: 2.8em;
+    transition: all .1s ease-in-out;
 }
 
 .questions-button:hover {
     cursor: pointer;
-    background: #4e6ac4;
+    transform: translateY(-0.1em);
+    box-shadow: 0em .3em 1.2em #7497F394, 0em 0.4em 0.6em #0000005a;
 }
   
 .questions-button .icon {
@@ -212,6 +241,9 @@
 }
 
 .App-main-right-questions-footer-button {
+    position: absolute;
+    right: .5em;
+    top: 0.5em;
     background: #516aab;
     color: white;
     font-family: inherit;
@@ -224,9 +256,8 @@
     letter-spacing: 0.05em;
     display: flex;
     align-items: center;
-    box-shadow: inset 0 0 1.6em -0.6em #7497F364;
+    box-shadow: 0em 1em 3em #7497F334, 0em 0.4em 0.6em #000000c0;
     overflow: hidden;
-    position: relative;
     height: 2.5em;
     padding-right: 4.5em;
 }
@@ -241,7 +272,7 @@
     height: 2.2em;
     width: 2.2em;
     border-radius: 0.7em;
-    box-shadow: 0.1em 0.1em 0.6em 0.2em #7497F364;
+    box-shadow: 0.1em 0.1em 0.6em 0.2em #0000005f;
     right: 0.3em;
     transition: all .5s;
 }

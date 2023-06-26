@@ -15,12 +15,23 @@
 
 .steps-title {
     margin-top: 0;
+    margin-bottom: 1rem;
+    margin-left: -0.5rem;
     align-self: flex-start;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
     font-size: 1.3rem;
     font-weight: 700;
     color: #eeeeeeaf;
-    margin-bottom: 1rem;
     text-transform: uppercase;
+}
+
+.steps-title.feather {
+    width: 1.5rem;
+    height: 1.5rem;
 }
 
 .step {

@@ -1,4 +1,4 @@
-import { SETUP_PROMPT, QA_PROMPT, CODE_PROMPT } from "./prompts"; // FOLLOWUP_PROMPT
+import { SETUP_PROMPT, QA_PROMPT, CODE_PROMPT, CODE_UPDATE_PROMPT } from "./prompts"; // FOLLOWUP_PROMPT
 import { GLOBAL_FUNCTIONS, CODE_FUNCTION, QUESTION_FUNCTION } from "./utils";
 const { Configuration, OpenAIApi } = require("openai");
 
@@ -30,6 +30,7 @@ class AI {
         let response;
     
         while (attempt < MAX_ATTEMPTS) {
+            console.log(`Attempt ${attempt + 1}...`);
             try {
                 response = await openai.createChatCompletion({
                     model: this.model,
@@ -108,7 +109,7 @@ async function run(messages, prompt) {
 
 async function code(messages, code, prompt) {
     const ai = new AI(messages);
-    const response = await ai.next(`Given the following code:\n${code}\n\n${prompt}\n\n${CODE_PROMPT}`, CODE_FUNCTION);
+    const response = await ai.next(`Given the following code:\n${code}\n\n${prompt}\n\n${CODE_UPDATE_PROMPT}`, CODE_FUNCTION);
 
     if (response.type === 'function_call') {
         return { type: 'function_call', function: response.function, arguments: response.arguments };

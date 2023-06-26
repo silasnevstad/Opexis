@@ -9,6 +9,7 @@ import '../styles/Questions.css'
 const Question = forwardRef(({q, i, onAnswerClick, detailedAnswer, setDetailedAnswer}, ref) => {
     return (
         <div ref={ref} key={i} className="App-main-right-questions-buttons-container">
+            <p className="App-main-right-questions-detailed-answer-title">Optional</p>
             <h2 className="App-main-right-questions-buttons-title">{q.question}</h2>
             <div className="App-main-right-questions-possible-answers">
                 {q.possibleAnswers.map((answer, index) => (
@@ -17,7 +18,12 @@ const Question = forwardRef(({q, i, onAnswerClick, detailedAnswer, setDetailedAn
                     </button>
                 ))}
             </div>
-            <p className="App-main-right-questions-detailed-answer-title">Optional</p>
+            <div className="App-main-right-questions-divider">
+                <div className="App-main-right-questions-divider-line"></div>
+                <div className="App-main-right-questions-divider-text">OR</div>
+                <div className="App-main-right-questions-divider-line"></div>
+            </div>
+            {/* <p className="App-main-right-questions-detailed-answer-title" style={{opacity: '0.4', paddingLeft: '0.5rem'}}>Optional</p> */}
             <TextareaAutosize
                 className="App-main-right-questions-detailed-answer"
                 type="text" 
