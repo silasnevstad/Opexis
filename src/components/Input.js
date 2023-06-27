@@ -43,7 +43,7 @@ const Input = ({ onSetup, onCodeNext }) => {
             onChange={handleChange}
             onKeyDown={handleKeyDown}
             minRows={1}
-            maxRows={25}
+            maxRows={2}
             disabled={state === 'clarify'}
         />
     )

@@ -7,6 +7,7 @@ export const UIProvider = ({ children }) => {
   const [accountModalOpen, setAccountModalOpen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [loading, setLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   return (
     <UIContext.Provider value={{
@@ -18,6 +19,8 @@ export const UIProvider = ({ children }) => {
       setIsSidebarOpen,
       loading,
       setLoading,
+      isError,
+      setIsError,
     }}>
       {children}
     </UIContext.Provider>

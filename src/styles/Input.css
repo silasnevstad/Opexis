@@ -1,9 +1,8 @@
 .App-main-input-search {
     width: 100%;
     padding: 1rem 1rem;
-    padding-right: 2rem;
     resize: none;
-    background-color: #516aab;
+    background-color: #6985ca;
     border: none;
     color: #fff;
     border-radius: 1rem;
@@ -13,7 +12,6 @@
     overflow: auto;
     font-size: 1.4rem;
     font-weight: 500;
-    /* padding: 0rem 1rem; */
     cursor: pointer;
     overflow: auto;
     font-family: 'Roboto', sans-serif;
@@ -24,5 +22,5 @@
 }
   
 .App-main-input-search::placeholder {
-    color: #ccc;
+    color: #eee;
 }

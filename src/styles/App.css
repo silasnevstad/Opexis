@@ -10,6 +10,16 @@
   background-color: #232323;
 }
 
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
 .App-main-left {
   width: 16%;
   height: 100vh;
@@ -79,7 +89,6 @@
   justify-content: center;
   margin-top: 1rem;
   width: 90%;
-  /* border: 1px solid red; */
 }
 
 .App-main-output-content {
@@ -111,6 +120,49 @@
   gap: 1rem;
   width: 50em;
 }
+
+.App-main-output-content-right-inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 101%;
+  gap: 1rem;
+}
+
+.upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.upload-button {
+  background-color: #5B9279;
+  padding: 0.6rem 1.3rem;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  border-radius: 0.6em;
+  border: none;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  box-shadow: 0em .1em 3em #7497F314, 0em 0.4em 0.6em #000000c0;
+}
+
+.upload-button:hover {
+  background-color: #5B9279cf;
+}
+
+.upload.feather {
+  stroke: white;
+}
+
 
 .App-main-right-header-title {
   font-size: 2.2rem;

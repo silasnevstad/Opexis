@@ -87,7 +87,7 @@ class AI {
 
 async function setup(messages, prompt) {
     const ai = new AI(messages);
-    const response = await ai.start(SETUP_PROMPT, `<instructions>:\n${prompt}</instructions>\n\n${QA_PROMPT}`);
+    const response = await ai.start(SETUP_PROMPT, `<instructions>:\n${prompt}</instructions>`);
 
     if (response.type === 'function_call') {
         return { type: 'function_call', function: response.function, arguments: response.arguments, messages: ai.messages };
@@ -97,8 +97,7 @@ async function setup(messages, prompt) {
   
 async function run(messages, prompt) {
     const ai = new AI(messages);
-    // if prompt is empty, then say "Choose whatever is most logical to you."
-    const userMessage = prompt ? `${prompt}\n\n${CODE_PROMPT}` : `Choose whatever is most logical to you.\n\n${CODE_PROMPT}`;
+    const userMessage = prompt === '' ? `${prompt}\n\n${CODE_PROMPT}` : `Choose whatever is most logical to you.\n\n${CODE_PROMPT}`;
     const response = await ai.next(userMessage, CODE_FUNCTION);
     
     if (response.type === 'function_call') {

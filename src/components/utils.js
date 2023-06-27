@@ -1,3 +1,29 @@
+import { getDocument, GlobalWorkerOptions } from 'pdfjs-dist/build/pdf';
+import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.entry';
+
+GlobalWorkerOptions.workerSrc = pdfjsWorker;
+
+export async function pdfToText(file) {
+  console.log("Converting PDF to text...", file);
+  const reader = new FileReader();
+  return new Promise((resolve, reject) => {
+    reader.onload = function(event) {
+      const pdfData = new Uint8Array(event.target.result);
+      getDocument(pdfData).promise.then(async (pdf) => {
+        let text = '';
+        for (let i = 1; i <= pdf.numPages; i++) {
+          const page = await pdf.getPage(i);
+          const content = await page.getTextContent();
+          text += content.items.map(item => item.str).join(' ');
+        }
+        resolve(text);
+      }).catch(reject);
+    };
+    reader.onerror = reject;
+    reader.readAsArrayBuffer(file);
+  });
+}
+
 export const parseQuestionResponsesToString = (questions) => {
   let questionResponses = '';
   questions.forEach((question, index) => {
@@ -121,13 +147,9 @@ export const examplesIdeas = [
   'Tic Tac Toe in ReactJS',
   'Morse code translator in javascript',
   'Reminder app in SwiftUI',
-  'Magic 8-Ball App in Swift',
-  'Alien Invasion Game in Pygame',
   'Virtual Piano App in JavaScript',
   'Flappy Bird Clone in Swift',
-  'Basic Blog in Django',
   'Simple Portfolio Website',
-  'Shopping List App in js',
   'Basic image editor in python using pillow',
   'Simple chatbot in Python',
   'Markdown previewer in React',
@@ -139,20 +161,16 @@ export const examplesIdeas = [
   'Styled dropdown menu in React',
   'Emoji interpreter in Python',
   '8-bit music composer in JavaScript',
-  'Shakespearean insult generator in Python',
   'A simple hangman game in Java',
   'Rubik\'s cube solver in C++',
   'Palindrome checker in JavaScript',
   'Random password generator in Python',
   'Checkers game in Java',
   'Interactive fireworks display in JavaScript',
-  'Movie recommendation engine in Python',
-  'Online sketchpad in JavaScript',
+  'Bayes net classifier in Python',
   'Leetspeak translator in JavaScript',
   'Conway\'s Game of Life simulation in Python',
   'Personal finance tracker in Swift',
-  'Trivia challenge game in React Native',
-  'Typing speed test in JavaScript',
   'Monte Carlo simulation in Python',
   'Langton\'s Ant simulation in JavaScript',
   'Fractal generator in JavaScript',
@@ -167,7 +185,6 @@ export const examplesIdeas = [
   'K-means clustering from scratch in Python',
   'Sudoku solver in Python',
   'Ray casting engine in JavaScript',
-  'Minesweeper game and AI solver in Python',
   'Decision tree algorithm from scratch in Python',
   'Simplex noise generator in JavaScript',
   'Pendulum simulation in Python',
