@@ -5,7 +5,7 @@ export const UIContext = createContext();
 export const UIProvider = ({ children }) => {
   const [signUpModalOpen, setSignUpModalOpen] = useState(false);
   const [accountModalOpen, setAccountModalOpen] = useState(false);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(window.innerWidth > 768);
   const [loading, setLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 

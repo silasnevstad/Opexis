@@ -289,6 +289,24 @@
     transform: scale(0.95);
 }
 
+@media (max-width: 768px) {
+    .App-main-right-questions-buttons {
+        flex-direction: column;
+        align-items: center;
+        max-height: 100%;
+        overflow: hidden;
+        padding-top: 1em;
+    }
+
+    .App-main-right-questions-possible-answers {
+        width: 100%;
+    }
+
+    .questions-button {
+        padding-left: 0em;
+    }
+}
+
 @media (prefers-color-scheme: light) {
     .App-main-right-questions {
         background-color: #313131;

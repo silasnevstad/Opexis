@@ -281,17 +281,17 @@
     }
 
     .App-main-left-bottom-button {
-        font-size: 1.2rem;
-        padding: .6rem 0rem;
+        font-size: 1.4rem;
+        padding: .75rem .2rem;
     }
 
     .App-main-left-bottom-button .feather {
-        width: 1.6rem;
-        height: 1.4rem;
+        width: 1.8rem;
+        height: 1.8rem;
     }
 
     .App-main-left-footer-text {
-        font-size: 1rem;
+        font-size: 1.1rem;
         padding: .3rem .5rem;
     }
 }

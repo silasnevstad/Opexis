@@ -43,3 +43,20 @@
     color: #eeeeeecf;
     margin-bottom: 1.5rem;
 }
+
+@media (max-width: 768px) {
+    .loader-outer-container {
+        width: 90%;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    .loader-outer-container {
+        background-color: #313131;
+        box-shadow: 0 3px 5px #0000005f;
+    }
+
+    .loader-title {
+        color: #fff;
+    }
+}

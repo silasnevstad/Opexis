@@ -3,9 +3,9 @@
     top: 40%;
     left: 58%;
     transform: translate(-50%, -50%);
-    width: 75vw;
+    width: 55vw;
     height: 60vh;
-    max-width: 75vw;
+    max-width: 55vw;
     max-height: 60vh;
     background-color: #151515;
     border-radius: 10px;
@@ -28,7 +28,7 @@
 .big-modal-left {
     display: flex;
     flex-direction: column;
-    width: 15%;
+    width: 25%;
     height: 100%;
     padding: .5rem .2rem;
     overflow: hidden;
@@ -293,8 +293,8 @@
 
 .small-close-button {
     position: absolute;
-    right: 0px;
-    top: 0px;
+    top: 0.3rem;
+    right: 0.3rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -542,6 +542,7 @@
 @media screen and (max-width: 1440px) {
     .small-modal {
         width: 50vw;
+        left: 50%;
     }
 
     .input-field-container input {
@@ -557,11 +558,26 @@
     .input-field-container input {
         width: 80vw;
     }
+
+    .small-modal-button {
+        padding: .75rem 1.5rem;
+        font-size: 1.25rem;
+    }
+
+    .small-modal-button-close {
+        padding: .65rem 1.5rem;
+        font-size: 1.25rem;
+    }
+
+    .small-close-button {
+        top: 0.3rem;
+        right: 0.3rem;
+    }
 }
 
 @media (prefers-color-scheme: light) {
     .big-modal {
-        background-color: #fff;
+        background-color: #424242;
         color: #222;
     }
 
@@ -599,17 +615,17 @@
     }
 
     .small-modal {
-        background-color: #fff;
+        background-color: #424242;
         color: #222;
     }
 
     .small-modal-header {
-        background-color: #fff;
+        background-color: #424242;
         color: #222;
     }
 
     .small-modal-footer {
-        background-color: #fff;
+        background-color: #424242;
         color: #222;
     }
 

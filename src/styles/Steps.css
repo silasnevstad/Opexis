@@ -303,7 +303,7 @@
     .steps-outer-container {
         flex-direction: column;
         padding: 0.7rem 0.9rem;
-        width: 100%;
+        width: 130%;
     }
 
     .steps-title {
@@ -347,7 +347,7 @@
     }
 
     .step-text-faded {
-        color: #000;
+        color: #ddd;
     }
 
     .status-circle.active {

@@ -30,7 +30,7 @@ export const parseQuestionResponsesToString = (questions) => {
       return;
     }
     const answer = question.detailedAnswer !== '' ? question.detailedAnswer : question.possibleAnswers[question.selectedChoice];
-    questionResponses += `${question.question}: ${answer}\n`;
+    questionResponses += `${answer}\n`;
   });
   return questionResponses;
 }

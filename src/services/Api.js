@@ -6,10 +6,11 @@ const { Configuration, OpenAIApi } = require("openai");
 const configuration = new Configuration({ apiKey: process.env.REACT_APP_OPENAI_API_KEY });
 const openai = new OpenAIApi(configuration);
 
+// [NOTE] - gpt-4 works best for now (3.5 is faster but provides a much worse experience)
 // gpt-3.5-turbo-0613 - 250,000 TPM
 // gpt-4-0613 - 250,000 TPM
 class AI {
-    constructor(messages = [], model = 'gpt-4-0613', temperature = 0.1) {
+    constructor(messages = [], model = 'gpt-4', temperature = 0.3) {
         this.model = model;
         this.temperature = temperature;
         this.messages = messages;
@@ -30,7 +31,7 @@ class AI {
         let response;
     
         while (attempt < MAX_ATTEMPTS) {
-            // console.log(`Attempt ${attempt + 1}...`);
+            console.log(`Attempt ${attempt + 1}...`);
             try {
                 response = await openai.createChatCompletion({
                     model: this.model,
@@ -38,7 +39,7 @@ class AI {
                     temperature: this.temperature,
                     functions: [functionCall],
                 });
-                // console.log('api response', response.data);
+                console.log('api response', response.data);
 
                 if (response.data.choices[0].finish_reason === 'function_call') {
                     break;

@@ -124,7 +124,7 @@ const Questions = ({ onNext }) => {
             <div className="App-main-right-questions-header">
                 <div className="App-main-right-questions-header-title">
                     <span className="App-main-right-questions-header-title-project-name">Clarify</span>
-                    <span className="App-main-right-questions-header-title-text">{`(${unansweredQuestions()} out of ${questions.length} left)`}</span>
+                    {window.innerWidth > 768 && <span className="App-main-right-questions-header-title-text">{`(${unansweredQuestions()} out of ${questions.length} left)`}</span>}
                 </div>
                 <button className="App-main-right-questions-footer-button" onClick={handleNextClick}>
                     {answeredQuestions() === 0 ? 'Skip...' : 'Generate...'}

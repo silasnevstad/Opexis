@@ -25,6 +25,14 @@ const Workspaces = ({ createNewProject, handleDeleteProject, onClose }) => {
         setIsEditing(-1);
     }
 
+    const handleSetActiveProject = (index) => {
+        // if mobile, close sidebar
+        if (window.innerWidth < 768) {
+            onClose();
+        }
+        setActiveProjectIndex(index);
+    }
+
     return (
         <div className="workspace-main">
             <div className="App-main-left-header">
@@ -47,7 +55,7 @@ const Workspaces = ({ createNewProject, handleDeleteProject, onClose }) => {
                     // if this project is the active project, add the active class to it (index might not be the same as activeProjectIndex because of sorting)
                         className={`workspaces-workspace ${index === activeProjectIndex ? 'active' : ''}`}
                         key={project.id}
-                        onClick={() => setActiveProjectIndex(index)}
+                        onClick={() => handleSetActiveProject(index)}
                         onMouseEnter={() => setShowPencilButton(index)}
                         onMouseLeave={() => setShowPencilButton(-1)}
                     >

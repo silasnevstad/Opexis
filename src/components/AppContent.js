@@ -6,6 +6,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { signIn, signUp, signOutUser, getProjects, addProject, updateProject, deleteProject, auth } from '../services/firebase';
 import AccountModal from './AccountModal';
 import SignUpModal from './SignUpModal';
+import ErrorModal from './ErrorModal';
 import Workspaces from './Workspaces';
 import OutputContent from './OutputContent';
 import '../styles/App.css';
@@ -22,7 +23,7 @@ function AppContent() {
       accountModalOpen, setAccountModalOpen,
       isSidebarOpen, setIsSidebarOpen,
       setIsLoading,
-    //   isError, setIsError,
+      isError, setIsError,
     } = useContext(UIContext);
   
     const {
@@ -245,14 +246,15 @@ function AppContent() {
             />
           </main>
         )}
-        {!isSidebarOpen && (
-          <button className="sidebar-open-btn" onClick={() => setIsSidebarOpen(true)}>
+        {/* {(!isSidebarOpen || window.innerWidth < 768) && ( */}
+          <button className="sidebar-open-btn" onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-sidebar"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
           </button>
-        )}
-        <main className={`App-main-right ${!isSidebarOpen ? 'full-width' : ''}`}>
+        {/* )} */}
+        <main className={`App-main-right ${!isSidebarOpen ? 'full-width' : 'half-width'}`}>
           {accountModalOpen && <AccountModal handleLogout={handleLogout} />}
           {signUpModalOpen && <SignUpModal onLogin={handleLogin} onSignUp={handleSignUp} />}
+          {isError && <ErrorModal onClose={() => setIsError(false)} />}
 
           <div className="App-main-right-header">
             <h1 className="App-main-right-header-title">Opexis<span className="App-main-right-header-title-span">GPT</span></h1>

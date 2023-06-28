@@ -31,3 +31,27 @@
       box-shadow: -2px -2px 2px #758ecfaf;
     }
 }
+
+@media (prefers-color-scheme: light) {
+    .loader-container {
+        background-color: #414141;
+        box-shadow: 0 3px 5px #0000005f;
+    }
+
+    @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+          box-shadow: -2px -2px 2px #758ecfff;
+        }
+      
+        50% {
+          transform: rotate(180deg);
+          box-shadow: -2px -2px 2px #758ecfff;
+        }
+      
+        100% {
+          transform: rotate(360deg);
+          box-shadow: -2px -2px 2px #758ecfff;
+        }
+    }
+}

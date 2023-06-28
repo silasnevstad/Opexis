@@ -10,6 +10,11 @@ import '../styles/Code.css';
 const StyledSyntaxHighlighter = styled(SyntaxHighlighter)`
     width: 100% !important;
     overflow: auto !important;
+
+    @media (max-width: 768px) {
+        font-size: 0.9em !important;
+        width: 95% !important;
+    }
 `;
 
 const Code = () => {

@@ -98,7 +98,9 @@ function OutputContent() {
             newProject.finishedState = 'generate';
             newProject.currentState = 'generate';
             setProjects([...projects.slice(0, activeProjectIndex), newProject, ...projects.slice(activeProjectIndex + 1)]);
+            console.log(answersString);
             const response = await run(newProject.messages, answersString || '');
+            console.log(response)
     
             if (response.type === 'function_call') {
                 updateProjectState('generate', {
@@ -161,8 +163,8 @@ function OutputContent() {
             <div className="App-main-output-content">
                 {projects[activeProjectIndex].currentState !== 'setup' && 
                     <div className="App-main-output-content-left">
-                    {<Steps />}
-                    {<Files />}
+                        {<Steps />}
+                        {<Files />}
                     </div>
                 }
                 <div className="App-main-output-content-right">
