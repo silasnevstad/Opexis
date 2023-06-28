@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react';
-import { signInWithGoogle } from './firebase';
+import { signInWithGoogle } from '../services/firebase';
 // import { UserContext } from '../context/UserContext';
 import { UIContext } from '../context/UIContext';
 import '../styles/SignUpModal.css'

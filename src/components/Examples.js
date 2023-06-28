@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react'
 import { ProjectContext } from '../context/ProjectContext'
-import { examplesIdeas } from '../components/utils'
+import { examplesIdeas } from '../services/utils'
 import '../styles/Examples.css'
 
 const Examples = ({ onSetup }) => {

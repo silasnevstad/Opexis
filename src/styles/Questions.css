@@ -24,10 +24,8 @@
     width: 100%;
     height: 100%;
     overflow-y: hidden;
-    /* margin-top: -.2rem; */
-    /* padding-bottom: 4rem; */
-    /* padding-right: 1rem; */
     margin-bottom: .1rem;
+    /* z-index: 99; */
 }
 
 .App-main-right-questions-header-title {
@@ -38,6 +36,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    /* z-index: 99; */
 }
 
 .App-main-right-questions-header-title-project-name {
@@ -69,9 +68,9 @@
     max-height: 33em;
     overflow-y: auto;
     overflow-x: hidden;
-    /* hide scroll bars */
     scrollbar-width: none;
     -ms-overflow-style: none;
+    z-index: 1;
 }
 
 .App-main-right-questions-buttons::-webkit-scrollbar {
@@ -88,6 +87,7 @@
     gap: 1rem;
     background-color: transparent;
     position: relative;
+    z-index: 1;
 }
 
 .App-main-right-questions-buttons-title {
@@ -126,7 +126,6 @@
 }
 
 .App-main-right-questions-divider-line {
-    /* width: 50rem; */
     width: 100%;
     height: 0.1rem;
     background-color: #eeeeee1f;
@@ -161,6 +160,7 @@
     border-radius: .5rem;
     padding: .5rem 1rem;
     font-family: 'Roboto', sans-serif;
+    z-index: 1;
 }
 
 .App-main-right-questions-detailed-answer::placeholder {
@@ -187,6 +187,11 @@
     box-shadow: 0em 1em 3em #7497F334, 0em 0.4em 0.6em #000000c0;
     min-height: 2.8em;
     transition: all .1s ease-in-out;
+}
+
+.questions-button.selected {
+    background: #51ab60;
+    box-shadow: 0em 1em 3em #7497F334, 0em 0.4em 0.6em #000000c0;
 }
 
 .questions-button:hover {
@@ -228,18 +233,6 @@
     transform: scale(0.95);
 }
 
-.App-main-right-questions-footer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: transparent;
-    backdrop-filter: blur(100px);
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    margin-top: 2%;
-}
-
 .App-main-right-questions-footer-button {
     position: absolute;
     right: .5em;
@@ -260,6 +253,7 @@
     overflow: hidden;
     height: 2.5em;
     padding-right: 4.5em;
+    z-index: 999;
 }
   
 .App-main-right-questions-footer-button .icon {
@@ -293,4 +287,78 @@
   
 .App-main-right-questions-footer-button:active .icon {
     transform: scale(0.95);
+}
+
+@media (prefers-color-scheme: light) {
+    .App-main-right-questions {
+        background-color: #313131;
+    }
+
+    .questions-button {
+        background: #7188c1;
+        box-shadow: 0em 1em 3em #7497F324, 0em 0.4em 0.6em #00000050;
+    }
+
+    .questions-button.selected {
+        background: #60bb70;
+        box-shadow: 0em 1em 3em #7497F324, 0em 0.4em 0.6em #00000050;
+    }
+
+    .questions-button:hover {
+        box-shadow: 0em .3em 1.2em #7497F394, 0em 0.4em 0.6em #0000005a;
+    }
+
+    .App-main-right-questions-header-title-text {
+        color: #fff;
+    }
+    
+    .App-main-right-questions-detailed-answer {
+        background-color: #eeeeee;
+    }
+    
+    .App-main-right-questions-detailed-answer::placeholder {
+        color: #555555af;
+    }
+    
+    .App-main-right-questions-detailed-answer:focus {
+        border-bottom: 2px solid #7188c1;
+    }
+    
+    .App-main-right-questions-footer-button {
+        background: #7188c1;
+    }
+    
+    .App-main-right-questions-footer-button .icon {
+        background: #7188c1;
+        display: none;
+    }
+    
+    .App-main-right-questions-footer-button:hover .icon {
+        box-shadow: 0.1em 0.1em 0.6em 0.2em #6584d5;
+    }
+    
+    .App-main-right-questions-footer-button:active .icon {
+        box-shadow: 0.1em 0.1em 0.6em 0.2em #6584d5;
+    }
+    
+    .App-main-right-questions-footer-button:hover {
+        box-shadow: 0em .3em 1.2em #6584d5, 0em 0.4em 0.6em #0000003a;
+    }
+    
+    .App-main-right-questions-footer-button:active {
+        box-shadow: 0em .3em 1.2em #6584d5, 0em 0.4em 0.6em #0000003a;
+    }
+    
+    .App-main-right-questions-footer-button:hover .icon svg {
+        color: #6584d5;
+    }
+    
+    .App-main-right-questions-footer-button:active .icon svg {
+        color: #6584d5;
+    }
+    
+    .App-main-right-questions-footer-button:hover {
+        background: #7188c1;
+        color: white;
+    }
 }

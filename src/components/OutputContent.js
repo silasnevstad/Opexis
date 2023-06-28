@@ -1,8 +1,8 @@
-import React, { useContext, useRef } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import { UIContext } from '../context/UIContext';
 import { ProjectContext } from '../context/ProjectContext';
-import { setup, run, code } from './Api';
-import { parseCodeToString } from './utils';
+import { setup, run, code } from '../services/Api';
+import { parseCodeToString } from '../services/utils';
 import UploadPDF from './Upload';
 import Input from './Input';
 import Steps from './Steps';
@@ -26,6 +26,14 @@ function OutputContent() {
 
     // Refs
     const isMounted = useRef(false);
+
+    useEffect(() => {
+        isMounted.current = true;
+
+        return () => {
+            isMounted.current = false;
+        };
+    }, []);
 
     const updateProjectState = (newState, newProps) => {
         if (projects[activeProjectIndex]) {
@@ -60,6 +68,7 @@ function OutputContent() {
             newProject.prompt = startingPrompt;
             setProjects([...projects.slice(0, activeProjectIndex), newProject, ...projects.slice(activeProjectIndex + 1)]);
             const response = await setup(newProject.messages, startingPrompt);
+            console.log(response);
     
             if (response.type === 'function_call') {
               updateProjectState('clarify', {
@@ -70,6 +79,7 @@ function OutputContent() {
                 })),
                 messages: response.messages
               });
+              console.log(projects[activeProjectIndex]);
             } else {
               setIsError(true);
             }
@@ -77,7 +87,7 @@ function OutputContent() {
             setIsError(true);
         } finally {
             if (isMounted.current) {
-              setLoading(false);
+                setLoading(false);
             }
         }
     };
@@ -91,12 +101,15 @@ function OutputContent() {
             newProject.currentState = 'generate';
             setProjects([...projects.slice(0, activeProjectIndex), newProject, ...projects.slice(activeProjectIndex + 1)]);
             const response = await run(newProject.messages, answersString || '');
+            console.log(response);
     
             if (response.type === 'function_call') {
-              updateProjectState('generate', {
-                outputFiles: response.arguments.files,
-                messages: response.messages
-              });
+                console.log('response files', response.arguments.files);
+                updateProjectState('generate', {
+                    outputFiles: response.arguments.files,
+                    messages: response.messages
+                });
+                console.log('updated project', projects[activeProjectIndex]);
             } else {
               setIsError(true);
             }
@@ -104,7 +117,7 @@ function OutputContent() {
             setIsError(true);
         } finally {
             if (isMounted.current) {
-              setLoading(false);
+                setLoading(false);
             }
         }
     };

@@ -1,10 +1,8 @@
 import React, { useEffect, useState, useContext } from 'react';
 import styled from 'styled-components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-// import { solarizedlight } from 'react-syntax-highlighter/dist/esm/styles/prism';
-// import { solarizedDarkAtom } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import Loader from './Loader';
+import SimpleLoader from './SimpleLoader';
 import { ProjectContext } from '../context/ProjectContext';
 import { UIContext } from '../context/UIContext';
 import '../styles/Code.css';
@@ -55,8 +53,11 @@ const Code = () => {
 
     if (loading) {
         return (
-            <div>
-                <Loader />
+            <div className="loader-outer-container">
+                <div className="loader-title">
+                    AI is generating your code...
+                </div>
+                <SimpleLoader />
             </div>
         )
     }

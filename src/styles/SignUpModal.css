@@ -13,8 +13,6 @@
     z-index: 1000;
     display: flex;
     flex-direction: column;
-    /* align-items: flex-start; */
-    /* justify-content: space-between; */
     box-shadow: 0 20px 30px rgba(0,0,0,0.2);
 }
 
@@ -32,9 +30,7 @@
     flex-direction: column;
     width: 15%;
     height: 100%;
-    padding: 1rem;
-    /* gap: 1rem; */
-    background-color: #151515;
+    padding: .5rem .2rem;
     overflow: hidden;
 }
 
@@ -45,7 +41,6 @@
     justify-content: center;
     width: 85%;
     height: 95%;
-    background-color: #151515;
     padding: 1rem;
 }
 
@@ -53,13 +48,16 @@
     color: #ffffff9f;
     font-size: 1.3rem;
     font-weight: 500;
-    width: 80%;
+    width: 90%;
     margin: 0rem;
-    padding: .75rem 1rem;
+    padding: .75rem .5rem;
     border-radius: 15px;
     transition: background-color 0.3s ease;
     border-right: 3px solid transparent;
-
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: .5rem;
 }
 
 .big-modal-title.active {
@@ -67,8 +65,6 @@
 }
 
 .big-modal-title:hover {
-    /* background-color: #353535; */
-    /* color: #ffffffcf; */
     cursor: pointer;
 }
 
@@ -96,12 +92,12 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    border-bottom: .5px solid #ffffff5f;
+    border-bottom: .5px solid #ffffff3f;
     padding: 0rem 1rem;
 }
 
 .big-modal-header-title {
-    color: #ffffffaf;
+    color: #ffffff8f;
     font-size: 1.8rem;
     font-weight: 600;
     width: 100%;
@@ -110,20 +106,13 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: .5rem;
+    gap: .75rem;
 }
 
-.big-modal-header-title .feather {
-    width: 2rem;
-    height: 2rem;
-    color: #ffffff8f;
-}
-
-.big-modal-header-title .feather-settings {
-    width: 1.7rem;
-    height: 1.7rem;
-    color: #ffffff8f;
-    cursor: pointer;
+.big-modal-title .feather {
+    width: 1.3rem;
+    height: 1.3rem;
+    color: #ffffff6f;
 }
 
 .big-modal-footer {
@@ -148,10 +137,6 @@
     padding: 0;
     margin: 0.5rem;
     cursor: pointer;
-}
-
-.big-modal-body-text .feather {
-    color: #ffffff8f;
 }
 
 .big-field-container {
@@ -422,7 +407,6 @@
 }
 
 .input-fields input:focus {
-
     outline: none;
     border: 1px solid #aaa;
     border-radius: 8px;
@@ -572,5 +556,128 @@
 
     .input-field-container input {
         width: 80vw;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    .big-modal {
+        background-color: #fff;
+        color: #222;
+    }
+
+    .big-modal-left {
+        color: #222;
+    }
+
+    .big-modal-right {
+        color: #222;
+    }
+
+    .big-modal-header {
+        border-color: #222;
+    }
+
+    .big-modal-header-title {
+        color: #222;
+    }
+
+    .big-modal-title {
+        color: #222;
+    }
+
+    .big-modal-title.active {
+        color: #222;
+        background-color: #c5c5cf;
+    }
+
+    .big-modal-title .feather {
+        color: #222;
+    }
+
+    .feather-x {
+        color: #222;
+    }
+
+    .small-modal {
+        background-color: #fff;
+        color: #222;
+    }
+
+    .small-modal-header {
+        background-color: #fff;
+        color: #222;
+    }
+
+    .small-modal-footer {
+        background-color: #fff;
+        color: #222;
+    }
+
+    .small-modal-button {
+        background-color: #6985CA;
+        color: #fff;
+    }
+
+    .small-modal-button:hover {
+        filter: brightness(1.1);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+       
+    .small-modal-button:active {
+        transform: translateY(-1px);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+       
+    .small-modal-button::after {
+        content: "";
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        border-radius: 100px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: all .4s;
+    }
+       
+    .small-modal-button::after {
+        background-color: #6985CA5f;
+    }
+       
+    .small-modal-button:hover::after {
+        transform: scaleX(1.4) scaleY(1.6);
+        opacity: 0;
+    }
+
+    .small-modal-button:active {
+        transform: translateY(0px);
+        box-shadow: 0px 0px 0px 0px #ffffff90;
+    }
+
+    .small-modal-button-close {
+        background-color: #83898a;
+        color: #fff;
+    }
+
+    .small-modal-button-close:hover {
+        background: #c3c9ca;
+        box-shadow: 0px 2px 0px 0px #ffffff90;
+    }
+
+    .small-modal .green {
+        background-color: #6EEB83;
+        color: #222;
+    }
+
+    .blue {
+        background-color: #6985CA;
+        color: #fff;
+    }
+
+    .redwhitehover:hover {
+        background-color: #FF5E5B;
+        color: #fff;
     }
 }

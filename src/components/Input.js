@@ -2,9 +2,11 @@ import TextareaAutosize from 'react-textarea-autosize';
 import '../styles/Input.css';
 import { useRef, useContext, useEffect } from 'react';
 import { ProjectContext } from '../context/ProjectContext';
+import { UIContext } from '../context/UIContext';
 
 const Input = ({ onSetup, onCodeNext }) => {
     const { input, setInput, projects, activeProjectIndex } = useContext(ProjectContext);
+    const { loading } = useContext(UIContext);
     const project = projects[activeProjectIndex];
     const state = project.currentState;
     const prompt = project.prompt;
@@ -15,7 +17,7 @@ const Input = ({ onSetup, onCodeNext }) => {
 
     useEffect(() => {
         setInput(prompt);
-    }, [prompt]);
+    }, [prompt, setInput]);
 
     const handleChange = (e) => {
         setInput(e.target.value);
@@ -36,7 +38,7 @@ const Input = ({ onSetup, onCodeNext }) => {
     return (
         <TextareaAutosize
             ref={textareaRef}
-            className="App-main-input-search"
+            className={loading ? "App-main-input-search loading" : "App-main-input-search"}
             type="text"
             placeholder={placeholder}
             value={input}

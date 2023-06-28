@@ -1,17 +1,15 @@
-.loader-container {
+/* .loader-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-bottom: 5rem;
 }
 
 .loader {
-  margin-top: 5rem;
   display: flex;
   padding: .1rem .5rem;
   border-radius: 2rem;
-}
+} */
 
 .loader-text {
   font-size: 1.5rem;

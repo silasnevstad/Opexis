@@ -3,7 +3,7 @@ import { UserContext } from '../context/UserContext';
 import { UIContext } from '../context/UIContext';
 import { ProjectContext } from '../context/ProjectContext';
 import { onAuthStateChanged } from 'firebase/auth';
-import { signIn, signUp, signOutUser, getProjects, addProject, updateProject, deleteProject, auth } from './firebase';
+import { signIn, signUp, signOutUser, getProjects, addProject, updateProject, deleteProject, auth } from '../services/firebase';
 import AccountModal from './AccountModal';
 import SignUpModal from './SignUpModal';
 import Workspaces from './Workspaces';
@@ -94,7 +94,7 @@ function AppContent() {
         unsubscribe();
         isMounted.current = false;
       };
-    }, []);
+    }, [setUserId, setUserEmail, setProjects]);
   
     const updateProjects = useCallback(async () => {
       if (!userId) return;
@@ -127,7 +127,7 @@ function AppContent() {
       if (newProjectAdded || updatedProjects.some(project => project.isDirty)) {
         setProjects(updatedProjects);
       }
-    }, [projects, userId]);
+    }, [projects, userId, setProjects]);
     
     useEffect(() => {
       updateProjects();
@@ -199,27 +199,23 @@ function AppContent() {
       if (userId) {
         const res = await addProject(userId, newProject);
         if (res && res.success) {
-          // handle success
           newProject.id = res.id;
         } else if (res && res.error) {
-          // handle error
           console.error(res.error);
         } else {
           console.error("Unexpected error in addProject");
         }
       }
-      setProjects([...projects, newProject]);
-      setActiveProjectIndex(projects.length);
+
+      setProjects([newProject, ...projects]);
+      setActiveProjectIndex(0);
     };  
   
     const handleDeleteProject = async (projectId) => {
-      // if projects is empty or only has one project, don't delete
       if (projects.length <= 1) {
         return;
       }
-      // if not logged in, just remove project from projects
       if (!userId) {
-        // remove project from projects
         const newProjects = projects.filter(p => p.id !== projectId);
         setProjects(newProjects);
         setActiveProjectIndex(0);

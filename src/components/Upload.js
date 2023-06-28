@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { pdfToText } from './utils';
+import { pdfToText } from '../services/utils';
 
 function PDFUpload({ onSetup }) {
   const [uploading, setUploading] = useState(false);

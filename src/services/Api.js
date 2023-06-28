@@ -38,8 +38,9 @@ class AI {
                     temperature: this.temperature,
                     functions: [functionCall],
                 });
+                console.log('api response', response.data);
 
-                if (response.data.choices[0].finish_reason === 'stop' || response.data.choices[0].finish_reason === 'function_call') {
+                if (response.data.choices[0].finish_reason === 'function_call') {
                     break;
                 }
     
@@ -97,7 +98,7 @@ async function setup(messages, prompt) {
   
 async function run(messages, prompt) {
     const ai = new AI(messages);
-    const userMessage = prompt === '' ? `${prompt}\n\n${CODE_PROMPT}` : `Choose whatever is most logical to you.\n\n${CODE_PROMPT}`;
+    const userMessage = prompt === '' ?  `Choose whatever is most logical to you.\n\n${CODE_PROMPT}` : `${prompt}\n\n${CODE_PROMPT}`;
     const response = await ai.next(userMessage, CODE_FUNCTION);
     
     if (response.type === 'function_call') {

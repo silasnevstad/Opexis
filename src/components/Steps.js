@@ -65,7 +65,7 @@ const Steps = () => {
                 {steps.map((step, index) => (
                     <div 
                         key={index} 
-                        className={`${project.finishedState === step ? 'step-outer-active' : 'step-outer'}`}
+                        className={`${project.currentState === step ? 'step-outer-active' : 'step-outer'}`}
                         onClick={() => {
                             // Only call updateStep if it's not the setup step, and it's not ahead of the current step
                             if (step !== 'setup' && steps.findIndex(s => s === step) <= steps.findIndex(s => s === project.finishedState)) {

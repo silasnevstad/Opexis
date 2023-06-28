@@ -138,7 +138,6 @@
     padding-right: 0.5rem;
 }
 
-
 .workspaces-workspace-name {
     font-size: 1.1rem;
     font-weight: 500;
@@ -207,7 +206,7 @@
     stroke-width: 2.3;
     color: #eee;
     opacity: 0.75;
-    margin-right: .8rem;
+    margin-right: .5rem;
 }
   
 .App-main-left-bottom-button:hover {
@@ -294,5 +293,53 @@
     .App-main-left-footer-text {
         font-size: 1rem;
         padding: .3rem .5rem;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    .App-main-left-header {
+        background-color: #313131;
+    }
+
+    .App-main-left-header-title {
+        color: #fff;
+    }
+
+    .App-main-left-header-button,
+    .App-main-left-header-close {
+        color: #fff;
+    }
+
+    .workspaces-workspace {
+        background-color: #f7f7f7;
+    }
+
+    .workspaces .feather {
+        color: #222;
+    }
+
+    .workspaces-workspace.active {
+        background-color: #ffffff;
+    }
+
+    .workspaces-workspace-name {
+        color: #000;
+    }
+
+    .workspaces-workspace-name input {
+        color: #000;
+    }
+
+    .App-main-left-bottom-button {
+        color: #fff;
+    }
+
+    .App-main-left-bottom-button .feather {
+        color: #fff;
+    }
+
+    .App-main-left-footer-text {
+        color: #fff;
+        background-color: #7188c1;
     }
 }

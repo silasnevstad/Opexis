@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, doc, setDoc, updateDoc, deleteDoc, collection, query, where, getDocs } from "firebase/firestore";
+import { getFirestore, doc, addDoc, updateDoc, deleteDoc, collection, query, where, getDocs } from "firebase/firestore";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 const firebaseConfig = {
@@ -87,11 +87,12 @@ async function addProject(uid, project) {
     if (!uid || !project) {
         return { success: false, error: 'missing-fields' };
     }
-    const projectRef = doc(collection(db, "projects"));
-    await setDoc(projectRef, { ...project, userId: uid });
+    const projectsCollection = collection(db, "projects");
+    const docRef = await addDoc(projectsCollection, { ...project, userId: uid });
 
-    return { success: true };
+    return { success: true, id: docRef.id };
 }
+
 
 async function updateProject(uid, projectId, updatedProject) {
     if (!uid || !projectId || !updatedProject) {

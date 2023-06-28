@@ -11,6 +11,18 @@
     border-radius: 15px;
     box-shadow: 0 10px 10px rgba(0,0,0,0.2);
     overflow: hidden;
+    animation: fadeInUp 0.5s ease-out both;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .steps-title {
@@ -25,7 +37,7 @@
     justify-content: center;
     font-size: 1.3rem;
     font-weight: 700;
-    color: #eeeeeeaf;
+    color: #eeeeee8f;
     text-transform: uppercase;
 }
 
@@ -49,16 +61,36 @@
 }
 
 .step-outer {
+    transition: background-color 0.3s ease;
+}
+
+.step-outer, .step-outer-active {
     display: flex;
     flex-direction: row;
     align-items: center;
+    animation: fadeInUp 0.5s ease-out both;
     gap: 0.5rem;
     width: 100%;
     padding: 0.5rem 0.5rem;
     border-radius: 0.5rem;
     position: relative;
     z-index: 1;
-    transition: background-color 0.3s ease;
+}
+
+.step-outer:nth-child(odd) {
+    animation-delay: 0.2s;
+}
+
+.step-outer:nth-child(even) {
+    animation-delay: 0.4s;
+}
+
+.step-outer-active:nth-child(odd) {
+    animation-delay: 0.2s;
+}
+
+.step-outer-active:nth-child(even) {
+    animation-delay: 0.4s;
 }
 
 .step-outer:hover {
@@ -68,6 +100,17 @@
 
 .step-outer:hover .copy-icon {
     display: block;
+}
+
+.step-outer-active {
+    background-color: #333333;
+    box-shadow: 0 3px 5px #0000005f;
+    transition: box-shadow 0.3s ease;
+}
+
+.step-outer-active:hover {
+    box-shadow: 0 5px 10px #0000005f;
+    cursor: pointer;
 }
 
 .copy-icon-container {
@@ -86,31 +129,9 @@
     display: none;
     cursor: pointer;
     color: #eeeeeeaf;
-    /* color: #4b6199; */
     z-index: 2;
     width: 1.2rem;
     position: absolute;
-}
-
-.step-outer-active {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 100%;
-    gap: 0.5rem;
-    width: 100%;
-    padding: 0.5rem 0.5rem;
-    border-radius: 0.5rem;
-    background-color: #333333;
-    position: relative;
-    z-index: 1;
-    box-shadow: 0 3px 5px #0000005f;
-    transition: box-shadow 0.3s ease;
-}
-
-.step-outer-active:hover {
-    box-shadow: 0 5px 10px #0000005f;
-    cursor: pointer;
 }
 
 .step-outer-active-files {
@@ -312,5 +333,60 @@
 
     .status-circle {
         margin-right: 0.2rem;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    .steps-outer-container {
+        background-color: #313131;
+        box-shadow: 0 3px 5px #0000005f;
+    }
+
+    .step-text {
+        color: #fff;
+    }
+
+    .step-text-faded {
+        color: #000;
+    }
+
+    .status-circle.active {
+        background-color: #6584d5;
+        box-shadow: 0 0 5px #6584d5, 0 0 10px #6584d5, 0 0 15px #6584d5;
+    }
+
+    .status-circle.inactive {
+        background-color: #888;
+        box-shadow: 0 0 5px #000000af;
+    }
+
+    .status-circle.complete {
+        background-color: #51ab60;
+        box-shadow: 0 0 5px #51ab60, 0 0 10px #51ab60, 0 0 15px #51ab60;
+    }
+
+    .status-circle.loading {
+        background-color: #6584d5;
+        box-shadow: 0 0 5px #6584d5, 0 0 10px #6584d5, 0 0 15px #6584d5;
+        animation: pulse 2s ease-in-out infinite;
+    }
+
+    .step-arrow {
+        color: #6584d5;
+    }
+
+    .step-outer-active {
+        background-color: #ffffff3f;
+        color: #fff;
+    }
+
+    .step-outer-active-files {
+        background-color: #ffffff3f;
+        color: #fff;
+    }
+
+    .copy-alert {
+        background-color: #4b6199;
+        color: #fff;
     }
 }

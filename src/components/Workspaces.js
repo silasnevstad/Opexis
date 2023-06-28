@@ -40,6 +40,8 @@ const Workspaces = ({ createNewProject, handleDeleteProject, onClose }) => {
             </div>
 
             <div className="workspaces">
+                {/*  reverse projects */}
+                
                 {[...projects].map((project, index) => ( //.sort((a, b) => b.lastModified - a.lastModified)
                     <div
                     // if this project is the active project, add the active class to it (index might not be the same as activeProjectIndex because of sorting)

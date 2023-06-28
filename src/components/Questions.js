@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext, createRef, useRef, forwardRef } from 'react';
-import { parseQuestionResponsesToString } from './utils';
-import Loader from './Loader';
+import { parseQuestionResponsesToString } from '../services/utils';
+import SimpleLoader from './SimpleLoader';
 import TextareaAutosize from 'react-textarea-autosize';
 import { ProjectContext } from '../context/ProjectContext';
 import { UIContext } from '../context/UIContext';
@@ -13,7 +13,7 @@ const Question = forwardRef(({q, i, onAnswerClick, detailedAnswer, setDetailedAn
             <h2 className="App-main-right-questions-buttons-title">{q.question}</h2>
             <div className="App-main-right-questions-possible-answers">
                 {q.possibleAnswers.map((answer, index) => (
-                    <button className="questions-button" key={index} onClick={() => onAnswerClick(i, index)} style={q.selectedChoice === index ? {backgroundColor: '#51ab60', boxShadow: '0px 4px 15px 0px #51ab60cf'} : {}}>
+                    <button className={q.selectedChoice === index ? "questions-button selected" : "questions-button"} key={index} onClick={() => onAnswerClick(i, index)} >
                         {answer}
                     </button>
                 ))}
@@ -110,8 +110,11 @@ const Questions = ({ onNext }) => {
 
     if (loading) {
         return (
-            <div>
-                <Loader />
+            <div className="loader-outer-container">
+                <div className="loader-title">
+                    AI is clarifying your request...
+                </div>
+                <SimpleLoader />
             </div>
         )
     }

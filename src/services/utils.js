@@ -155,8 +155,6 @@ export const examplesIdeas = [
   'Markdown previewer in React',
   'Rock paper scissors game in Java',
   'Countdown timer in Swift',
-  'Chess game in javaScript',
-  'Memory matching game in React Native',
   'Simple survey form in HTML/CSS',
   'Styled dropdown menu in React',
   'Emoji interpreter in Python',

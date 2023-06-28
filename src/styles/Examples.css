@@ -34,8 +34,8 @@
 }
 
 .examples-button {
-    background: #5875BF;
-    color: white;
+    background: #4862a3e6;
+    color: #ddd;
     font-family: inherit;
     padding: 0.3em;
     padding-left: 1.2em;
@@ -53,9 +53,36 @@
     width: 30em;
     padding-right: 3.3em;
     transition: all .1s ease-in-out;
+    animation: fadeInUp 0.5s ease-in-out;
 }
 
-/* remove shadow when hovering over examples-button */
+.examples-button:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.examples-button:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.examples-button:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.examples-button:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .examples-button:hover {
     box-shadow: 0em 1em 3em #7497F364, 0em 0.4em 0.6em #000000f0;
     transform: translateY(-0.2em);
@@ -97,8 +124,8 @@
 .icon-btn {
     width: 40px;
     height: 40px;
-    border: 1px solid #333;
-    background: #5B9279;
+    border: none;
+    background: #51ab60;
     border-radius: 25px;
     overflow: hidden;
     position: relative;
@@ -106,6 +133,12 @@
     font-weight: 500;
     font-family: inherit;
     box-shadow: 0em 1em 3em #7497F334, 0em 0.4em 0.6em #000000c0;
+    animation: fadeInUp 0.5s ease-out both;
+    animation-delay: 0.5s;
+}
+
+.icon-btn:hover {
+    background-color: #51ab60af;
 }
 
 .add-btn:hover {
@@ -189,4 +222,15 @@
     height: 4px;
     top: calc(50% - 2px);
     background: transparent;
+}
+
+@media (prefers-color-scheme: light) {
+    .examples-button {
+        background: #5c77c1;
+        color: #fff;
+    }
+
+    .icon-btn {
+        background: #60bb70;
+    }
 }
