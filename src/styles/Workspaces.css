@@ -6,6 +6,37 @@
     position: fixed; 
 }
 
+
+@media (max-width: 2000px) {
+    .workspace-main {
+      width: 14%;
+    }
+}
+  
+@media (max-width: 1800px) {
+    .workspace-main {
+      width: 15%;
+    }
+}
+  
+@media (max-width: 1600px) {
+    .workspace-main {
+      width: 16%;
+    }
+}
+  
+@media (max-width: 1400px) {
+    .workspace-main {
+      width: 18%;
+    }
+}
+  
+@media (max-width: 1200px) {
+    .workspace-main {
+      width: 20%;
+    }
+}
+
 .App-main-left-header {
     display: flex;
     flex-direction: row;
