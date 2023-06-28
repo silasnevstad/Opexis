@@ -68,7 +68,6 @@ function OutputContent() {
             newProject.prompt = startingPrompt;
             setProjects([...projects.slice(0, activeProjectIndex), newProject, ...projects.slice(activeProjectIndex + 1)]);
             const response = await setup(newProject.messages, startingPrompt);
-            console.log(response);
     
             if (response.type === 'function_call') {
               updateProjectState('clarify', {
@@ -79,7 +78,6 @@ function OutputContent() {
                 })),
                 messages: response.messages
               });
-              console.log(projects[activeProjectIndex]);
             } else {
               setIsError(true);
             }
@@ -101,15 +99,12 @@ function OutputContent() {
             newProject.currentState = 'generate';
             setProjects([...projects.slice(0, activeProjectIndex), newProject, ...projects.slice(activeProjectIndex + 1)]);
             const response = await run(newProject.messages, answersString || '');
-            console.log(response);
     
             if (response.type === 'function_call') {
-                console.log('response files', response.arguments.files);
                 updateProjectState('generate', {
                     outputFiles: response.arguments.files,
                     messages: response.messages
                 });
-                console.log('updated project', projects[activeProjectIndex]);
             } else {
               setIsError(true);
             }

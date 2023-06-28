@@ -4,7 +4,6 @@ import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.entry';
 GlobalWorkerOptions.workerSrc = pdfjsWorker;
 
 export async function pdfToText(file) {
-  console.log("Converting PDF to text...", file);
   const reader = new FileReader();
   return new Promise((resolve, reject) => {
     reader.onload = function(event) {

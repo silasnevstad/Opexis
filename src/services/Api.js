@@ -30,7 +30,7 @@ class AI {
         let response;
     
         while (attempt < MAX_ATTEMPTS) {
-            console.log(`Attempt ${attempt + 1}...`);
+            // console.log(`Attempt ${attempt + 1}...`);
             try {
                 response = await openai.createChatCompletion({
                     model: this.model,
@@ -38,7 +38,7 @@ class AI {
                     temperature: this.temperature,
                     functions: [functionCall],
                 });
-                console.log('api response', response.data);
+                // console.log('api response', response.data);
 
                 if (response.data.choices[0].finish_reason === 'function_call') {
                     break;
