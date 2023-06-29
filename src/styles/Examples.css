@@ -225,16 +225,24 @@
     .examples-button {
         background: #5c77c1;
         color: #fff;
-        box-shadow: 0em 1em 3em #7497F334, 0em 0.4em 0.6em #00000060;
+        box-shadow: 0em 1em 3em #7497F334, 0em 0.4em 0.6em #00000030;
     }
 
     .examples-button:hover {
-        box-shadow: 0em 1em 3em #7497F364, 0em 0.4em 0.6em #000000f0;
+        box-shadow: 0em 1em 3em #7497F364, 0em 0.4em 0.6em #00000060;
     }
 
     .icon-btn {
         background: #60bb70;
         box-shadow: 0em 1em 3em #7497F334, 0em 0.4em 0.6em #00000070;
+    }
+
+    .icon-btn:hover {
+        background-color: #60bb70ef;
+    }
+
+    .btn-txt {
+        color: #fff;
     }
 
     .App-main-right-examples-title {

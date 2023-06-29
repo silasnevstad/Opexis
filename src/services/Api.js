@@ -1,4 +1,3 @@
-import React, { useContext } from "react";
 import { SETUP_PROMPT, QA_PROMPT, CODE_PROMPT, CODE_UPDATE_PROMPT } from "./prompts"; // FOLLOWUP_PROMPT
 import { GLOBAL_FUNCTIONS, CODE_FUNCTION, QUESTION_FUNCTION } from "./utils";
 const { Configuration, OpenAIApi } = require("openai");
