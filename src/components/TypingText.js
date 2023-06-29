@@ -31,9 +31,6 @@ const TypingText = () => {
         "Clarifying vision...",
         "Narrowing focus...",
     ];
-    
-    
-    
 
     // Returns a random typing speed between a range
     function getRandomTypingSpeed(){
