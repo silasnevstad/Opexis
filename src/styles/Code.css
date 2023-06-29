@@ -17,6 +17,7 @@
     box-shadow: 0 10px 10px rgba(0,0,0,0.2);
     border-radius: 1rem;
     padding: 1em .75em;
+    padding-top: 1.5em;
     padding-bottom: 2em;
     width: 102.5%;
     height: 100%;
@@ -38,10 +39,10 @@
 }
 
 .loader-title {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     font-weight: 700;
     color: #eeeeeecf;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
 }
 
 @media (max-width: 768px) {

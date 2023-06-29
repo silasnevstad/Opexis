@@ -4,7 +4,7 @@ import { signInWithGoogle } from '../services/firebase';
 import { UIContext } from '../context/UIContext';
 import '../styles/SignUpModal.css'
 
-const SignUpModal = ({ onSignUp, onLogin }) => {
+const SignUpModal = ({ onSignUp, onLogin, isSidebarOpen }) => {
     // const { userApiKey, setUserApiKey } = useContext(UserContext);
     const { signUpModalOpen, setSignUpModalOpen } = useContext(UIContext);
     const [email, setEmail] = useState('');
@@ -98,7 +98,7 @@ const SignUpModal = ({ onSignUp, onLogin }) => {
     )
 
     return (
-        <div className={`small-modal ${signUpModalOpen ? 'open' : ''}`}>
+        <div className={isSidebarOpen ? `small-modal sidebar-open` :`small-modal`}>
             <div className="small-modal-content">
                 <div className="small-modal-header">
                     <h4 className="small-modal-title">{logginIn ? 'Log In' : 'Sign Up'}</h4>

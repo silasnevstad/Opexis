@@ -60,7 +60,7 @@ const PreferencesPage = ({ userApiKey, settingApiKey, setSettingApiKey, apiKey, 
     )
 }
 
-const AccountModal = ({ handleLogout }) => {
+const AccountModal = ({ handleLogout, isSidebarOpen }) => {
     const { userApiKey, userEmail, setUserApiKey } = useContext(UserContext);
     const { setAccountModalOpen } = useContext(UIContext);
     const [curentPage, setCurrentPage] = useState('account');
@@ -86,7 +86,7 @@ const AccountModal = ({ handleLogout }) => {
     }
 
     return (
-        <div className="big-modal">
+        <div className={isSidebarOpen ? "big-modal sidebar-open" : "big-modal"}>
             {curentPage === 'account' ?
                 <div className="big-modal-header">
                     <div className="big-modal-header-title">

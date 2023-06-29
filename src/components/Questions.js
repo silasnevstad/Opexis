@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext, createRef, useRef, forwardRef } from 'react';
 import { parseQuestionResponsesToString } from '../services/utils';
 import SimpleLoader from './SimpleLoader';
+import TypingText from './TypingText';
 import TextareaAutosize from 'react-textarea-autosize';
 import { ProjectContext } from '../context/ProjectContext';
 import { UIContext } from '../context/UIContext';
@@ -115,6 +116,7 @@ const Questions = ({ onNext }) => {
                     AI is clarifying your request...
                 </div>
                 <SimpleLoader />
+                <TypingText />
             </div>
         )
     }

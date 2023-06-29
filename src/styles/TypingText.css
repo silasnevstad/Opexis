@@ -1,0 +1,23 @@
+@keyframes blinker {
+    from {opacity: 1.0;}
+    to {opacity: 0.0;}
+}
+
+p {
+    display: inline-block;
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #eeeeeecf;
+    margin-bottom: 1.5rem;
+    margin-top: 2em;
+}
+
+p:after {
+    content: '|';
+    display: inline;
+    animation-name: blinker;
+    animation-duration: 0.6s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}

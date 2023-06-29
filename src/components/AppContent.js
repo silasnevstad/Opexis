@@ -252,9 +252,9 @@ function AppContent() {
           </button>
         {/* )} */}
         <main className={`App-main-right ${!isSidebarOpen ? 'full-width' : 'half-width'}`}>
-          {accountModalOpen && <AccountModal handleLogout={handleLogout} />}
-          {signUpModalOpen && <SignUpModal onLogin={handleLogin} onSignUp={handleSignUp} />}
-          {isError && <ErrorModal onClose={() => setIsError(false)} />}
+          {accountModalOpen && <AccountModal handleLogout={handleLogout} isSidebarOpen={isSidebarOpen} />}
+          {signUpModalOpen && <SignUpModal onLogin={handleLogin} onSignUp={handleSignUp} isSidebarOpen={isSidebarOpen} />}
+          {isError && <ErrorModal isSidebarOpen={isSidebarOpen} />}
 
           <div className="App-main-right-header">
             <h1 className="App-main-right-header-title">Opexis<span className="App-main-right-header-title-span">GPT</span></h1>

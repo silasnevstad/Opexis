@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import SimpleLoader from './SimpleLoader';
+import TypingText from './TypingText';
 import { ProjectContext } from '../context/ProjectContext';
 import { UIContext } from '../context/UIContext';
 import '../styles/Code.css';
@@ -63,6 +64,7 @@ const Code = () => {
                     AI is generating your code...
                 </div>
                 <SimpleLoader />
+                <TypingText />
             </div>
         )
     }

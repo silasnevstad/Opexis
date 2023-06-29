@@ -183,9 +183,11 @@
     border-radius: 0.9em;
     border: none;
     text-align: center;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.04em;
+    white-space: pre-wrap;
     box-shadow: 0em 1em 3em #7497F334, 0em 0.4em 0.6em #000000c0;
     min-height: 2.8em;
+    width: 100%;
     transition: all .1s ease-in-out;
 }
 
