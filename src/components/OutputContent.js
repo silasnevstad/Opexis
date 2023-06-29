@@ -14,8 +14,11 @@ import Examples from './Examples';
 import '../styles/App.css';
 
 function OutputContent() {
+    // let freeUses = 3;
+
     // Contexts
     const {
+        // setSignUpModalOpen,
         setLoading, setIsError,
     } = useContext(UIContext);
     
@@ -56,6 +59,14 @@ function OutputContent() {
     };
 
     const onSetup = async (prompt = '') => {
+        // if (freeUses <= 0) {
+        //     if (userApiKey) {
+        //         alert('You have used all your free uses. Please set an API key in your account settings.');
+        //     }
+        //     setSignUpModalOpen(true);
+        //     return;
+        // }
+
         let startingPrompt = '';
         if (prompt) {
           startingPrompt = prompt;
@@ -75,14 +86,17 @@ function OutputContent() {
             const response = await setup(newProject.messages, startingPrompt, userApiKey);
     
             if (response.type === 'function_call') {
-              updateProjectState('clarify', {
-                questions: response.arguments.questions.map(q => ({
-                  ...q,
-                  selectedChoice: -1,
-                  detailedAnswer: ''
-                })),
-                messages: response.messages
-              });
+                updateProjectState('clarify', {
+                    questions: response.arguments.questions.map(q => ({
+                    ...q,
+                    selectedChoice: -1,
+                    detailedAnswer: ''
+                    })),
+                    messages: response.messages
+                });
+                // if (!userApiKey) {
+                //     freeUses--;
+                // }
             } else {
               setIsError(true);
             }

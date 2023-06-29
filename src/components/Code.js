@@ -63,6 +63,7 @@ const Code = () => {
                 <div className="loader-title">
                     AI is generating your code...
                 </div>
+                <div className="loader-title-small"></div>
                 <SimpleLoader />
                 <TypingText />
             </div>
