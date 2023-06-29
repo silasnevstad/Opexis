@@ -1,6 +1,7 @@
 import { useState, useContext } from 'react';
 import { UserContext } from '../context/UserContext';
 import { UIContext } from '../context/UIContext';
+import { setApiKey } from '../services/firebase';
 import '../styles/SignUpModal.css'
 
 const AccountPage = ({ userEmail, handleLogout }) => {
@@ -21,7 +22,8 @@ const AccountPage = ({ userEmail, handleLogout }) => {
     )
 }
 
-const PreferencesPage = ({ userApiKey, settingApiKey, setSettingApiKey, apiKey, setApiKey, handleConfirm }) => {
+const PreferencesPage = ({ userApiKey, settingApiKey, setSettingApiKey, apiKeyField, setApiKeyField, handleConfirm }) => {
+    const [hideApiKey, setHideApiKey] = useState(true);
     const toggleSettingApiKey = () => {
         setSettingApiKey(!settingApiKey);
     }
@@ -35,14 +37,14 @@ const PreferencesPage = ({ userApiKey, settingApiKey, setSettingApiKey, apiKey, 
                             type={'text'}
                             id={"api-key"}
                             placeholder=""
-                            value={apiKey}
-                            onChange={(e) => setApiKey(e.target.value)}
-                            className={!apiKey ? '' : 'non-empty'}
+                            value={apiKeyField}
+                            onChange={(e) => setApiKeyField(e.target.value)}
+                            className={!apiKeyField ? '' : 'non-empty'}
                         />
                         <label htmlFor={"api-key"}>Set API Key</label>
                     </div>
                     :
-                    <p className="small-modal-body-text">{userApiKey === "" ? 'No API Key set' : `${userApiKey}`}</p>
+                    <p className="small-modal-body-text" onClick={() => setHideApiKey(!hideApiKey)}>{userApiKey === "" ? 'No API Key set' : hideApiKey ? `${userApiKey.slice(0, 2)}...${userApiKey.slice(-4)}` : `${userApiKey}`}</p>
                 }
             </div>
             <div className="big-modal-footer">
@@ -61,19 +63,24 @@ const PreferencesPage = ({ userApiKey, settingApiKey, setSettingApiKey, apiKey, 
 }
 
 const AccountModal = ({ handleLogout, isSidebarOpen }) => {
-    const { userApiKey, userEmail, setUserApiKey } = useContext(UserContext);
+    const { userId, userApiKey, userEmail, setUserApiKey } = useContext(UserContext);
     const { setAccountModalOpen } = useContext(UIContext);
     const [curentPage, setCurrentPage] = useState('account');
     const [settingApiKey, setSettingApiKey] = useState(false);
-    const [apiKey, setApiKey] = useState('');
+    const [apiKeyField, setApiKeyField] = useState('');
 
-    const handleConfirm = () => {
+    const handleConfirm = async () => {
         if (settingApiKey) {
-            if (!apiKey) {
+            if (!apiKeyField) {
                 alert('Please fill out all fields');
                 return;
             }
-            setUserApiKey(apiKey);
+            const apiKeyRes = await setApiKey(userId, apiKeyField);
+            if (apiKeyRes) {
+                setUserApiKey(apiKeyField);   
+            } else {
+                console.error('Error setting API Key');
+            }
             setSettingApiKey(false);
         } else {
             setSettingApiKey(true);
@@ -119,7 +126,7 @@ const AccountModal = ({ handleLogout, isSidebarOpen }) => {
                     <button className='big-close-button'type="button" onClick={() => setAccountModalOpen(false)}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                     </button>
-                    {curentPage === 'account' ? <AccountPage userEmail={userEmail} handleLogout={handleLogout} /> : <PreferencesPage userApiKey={userApiKey} settingApiKey={settingApiKey} setSettingApiKey={setSettingApiKey} apiKey={apiKey} setApiKey={setApiKey} handleConfirm={handleConfirm} />}
+                    {curentPage === 'account' ? <AccountPage userEmail={userEmail} handleLogout={handleLogout} /> : <PreferencesPage userApiKey={userApiKey} settingApiKey={settingApiKey} setSettingApiKey={setSettingApiKey} apiKeyField={apiKeyField} setApiKeyField={setApiKeyField} handleConfirm={handleConfirm} />}
                 </div>
             </div>
         </div>

@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, doc, addDoc, updateDoc, deleteDoc, collection, query, where, getDocs } from "firebase/firestore";
+import { getFirestore, doc, getDoc, getDocs, setDoc, addDoc, updateDoc, deleteDoc, collection, query, where  } from "firebase/firestore";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 const firebaseConfig = {
@@ -114,4 +114,36 @@ async function deleteProject(uid, projectId) {
     return { success: true };
 }
 
-export { signUp, signIn, signOutUser, signInWithGoogle, getProjects, addProject, updateProject, deleteProject, auth };
+async function setApiKey(uid, apiKey) {
+    if (!uid || !apiKey) {
+        return { success: false, error: 'missing-fields' };
+    }
+
+    const apiKeysRef = doc(db, `apiKeys/${uid}`);
+    const docSnap = await getDoc(apiKeysRef);
+    
+    if (docSnap.exists()) {
+        await updateDoc(apiKeysRef, { apiKey: apiKey });
+    } else {
+        await setDoc(apiKeysRef, { apiKey: apiKey, userId: uid });
+    }
+    
+    return { success: true };
+}
+
+async function getApiKey(uid) {
+    if (!uid) {
+        return { success: false, error: 'missing-fields' };
+    }
+
+    const apiKeysRef = doc(db, `apiKeys/${uid}`);
+    const docSnap = await getDoc(apiKeysRef);
+    
+    if (docSnap.exists()) {
+        return { success: true, apiKey: docSnap.data().apiKey };
+    } else {
+        return { success: false, error: 'no-api-key' };
+    }
+}
+
+export { signUp, signIn, signOutUser, signInWithGoogle, getProjects, addProject, updateProject, deleteProject, setApiKey, getApiKey, auth };

@@ -334,6 +334,7 @@
     
     .App-main-right-questions-detailed-answer {
         background-color: #eeeeee;
+        color: #000;
     }
     
     .App-main-right-questions-detailed-answer::placeholder {

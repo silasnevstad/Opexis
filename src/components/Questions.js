@@ -115,6 +115,9 @@ const Questions = ({ onNext }) => {
                 <div className="loader-title">
                     AI is clarifying your request...
                 </div>
+                <div className="loader-title-small">
+                    (Optionally answer the following questions)
+                </div>
                 <SimpleLoader />
                 <TypingText />
             </div>

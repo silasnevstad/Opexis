@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useRef } from 'react';
 import { UIContext } from '../context/UIContext';
 import { ProjectContext } from '../context/ProjectContext';
+import { UserContext } from '../context/UserContext';
 import { setup, run, code } from '../services/Api';
 import { parseCodeToString } from '../services/utils';
 import UploadPDF from './Upload';
@@ -23,6 +24,10 @@ function OutputContent() {
         projects, setProjects,
         activeProjectIndex,
     } = useContext(ProjectContext);
+
+    const {
+        userApiKey,
+    } = useContext(UserContext);
 
     // Refs
     const isMounted = useRef(false);
@@ -67,7 +72,7 @@ function OutputContent() {
             newProject.currentState = 'clarify';
             newProject.prompt = startingPrompt;
             setProjects([...projects.slice(0, activeProjectIndex), newProject, ...projects.slice(activeProjectIndex + 1)]);
-            const response = await setup(newProject.messages, startingPrompt);
+            const response = await setup(newProject.messages, startingPrompt, userApiKey);
     
             if (response.type === 'function_call') {
               updateProjectState('clarify', {
@@ -98,9 +103,7 @@ function OutputContent() {
             newProject.finishedState = 'generate';
             newProject.currentState = 'generate';
             setProjects([...projects.slice(0, activeProjectIndex), newProject, ...projects.slice(activeProjectIndex + 1)]);
-            console.log(answersString);
-            const response = await run(newProject.messages, answersString || '');
-            console.log(response)
+            const response = await run(newProject.messages, answersString || '', userApiKey);
     
             if (response.type === 'function_call') {
                 updateProjectState('generate', {
@@ -135,7 +138,7 @@ function OutputContent() {
         setProjects([...projects.slice(0, activeProjectIndex), newProject, ...projects.slice(activeProjectIndex + 1)]);
     
         try {
-            const response = await code(newProject.messages, codeString, input);
+            const response = await code(newProject.messages, codeString, input, userApiKey);
     
             if (response.type === 'function_call') {
                 const { outputFiles: existingOutputFiles } = projects[activeProjectIndex];

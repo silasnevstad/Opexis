@@ -3,7 +3,7 @@ import { UserContext } from '../context/UserContext';
 import { UIContext } from '../context/UIContext';
 import { ProjectContext } from '../context/ProjectContext';
 import { onAuthStateChanged } from 'firebase/auth';
-import { signIn, signUp, signOutUser, getProjects, addProject, updateProject, deleteProject, auth } from '../services/firebase';
+import { signIn, signUp, signOutUser, getProjects, addProject, updateProject, deleteProject, getApiKey, auth } from '../services/firebase';
 import AccountModal from './AccountModal';
 import SignUpModal from './SignUpModal';
 import ErrorModal from './ErrorModal';
@@ -62,18 +62,22 @@ function AppContent() {
               if (addProjectRes.success) {
                 setProjects([addProjectRes.project]);
               } else {
-                // handle error
                 console.error(addProjectRes.error);
               }
             } else {
               setProjects(projectsRes.projects);
             }
           } else {
-            // handle error
             console.error(projectsRes.error);
           }
+          const apiKeyRes = await getApiKey(uid);
+          if (apiKeyRes.success) {
+            setUserApiKey(apiKeyRes.apiKey);
+          } else {
+            console.error(apiKeyRes.error);
+          }
         } else if (!user && isMounted.current) {
-          // User is signed out
+          // User isn't signed in
           setUserId('');
           setUserEmail('');
           setProjects([{

@@ -42,6 +42,13 @@
     font-size: 1.3rem;
     font-weight: 700;
     color: #eeeeeecf;
+    margin-bottom: .3rem;
+}
+
+.loader-title-small {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #eeeeeeaf;
     margin-bottom: 2rem;
 }
 
