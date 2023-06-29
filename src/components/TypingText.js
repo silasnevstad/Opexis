@@ -2,13 +2,6 @@ import React, { useState, useEffect } from 'react';
 import '../styles/TypingText.css'
 
 const TypingText = () => {
-    const [index, setIndex] = useState(0);
-    const [subIndex, setSubIndex] = useState(0);
-    const [backspace, setBackspace] = useState(false);
-    const [typingSpeed, setTypingSpeed] = useState(getRandomTypingSpeed());
-    const [isPause, setIsPause] = useState(false); // New pause state
-
-    // List of phrases to display
     const phrases = [
         "Piecing together 0s and 1s", 
         "Booting up the AI...", 
@@ -31,6 +24,12 @@ const TypingText = () => {
         "Clarifying vision...",
         "Narrowing focus...",
     ];
+    // random index for phrases array to start typing
+    const [index, setIndex] = useState(Math.floor(Math.random() * phrases.length));
+    const [subIndex, setSubIndex] = useState(0);
+    const [backspace, setBackspace] = useState(false);
+    const [typingSpeed, setTypingSpeed] = useState(getRandomTypingSpeed());
+    const [isPause, setIsPause] = useState(false); // New pause state
 
     // Returns a random typing speed between a range
     function getRandomTypingSpeed(){
