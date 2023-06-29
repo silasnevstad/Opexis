@@ -12,7 +12,6 @@ class AI {
         this.messages = messages;
         this.functions = GLOBAL_FUNCTIONS;
 
-        // Initialize OpenAI with provided API key (it might be "" or undefined/null if the user hasn't logged in yet or doesn't have an API key so we need to check for that)
         let configuration;
         if (apiKey && apiKey !== "") {
             configuration = new Configuration({ apiKey: apiKey });
