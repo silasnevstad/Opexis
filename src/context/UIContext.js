@@ -7,6 +7,7 @@ export const UIProvider = ({ children }) => {
   const [accountModalOpen, setAccountModalOpen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(window.innerWidth > 768);
   const [loading, setLoading] = useState(false);
+  const [isLogginIn, setIsLogginIn] = useState(false);
   const [isError, setIsError] = useState(false);
 
   return (
@@ -19,6 +20,8 @@ export const UIProvider = ({ children }) => {
       setIsSidebarOpen,
       loading,
       setLoading,
+      isLogginIn,
+      setIsLogginIn,
       isError,
       setIsError,
     }}>

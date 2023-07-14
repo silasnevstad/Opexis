@@ -8,6 +8,7 @@ import AccountModal from './AccountModal';
 import SignUpModal from './SignUpModal';
 import ErrorModal from './ErrorModal';
 import Workspaces from './Workspaces';
+import SimpleLoader from './SimpleLoader';
 import OutputContent from './OutputContent';
 import '../styles/App.css';
 
@@ -22,8 +23,8 @@ function AppContent() {
       signUpModalOpen, setSignUpModalOpen,
       accountModalOpen, setAccountModalOpen,
       isSidebarOpen, setIsSidebarOpen,
-      setIsLoading,
-      isError, setIsError,
+      isLogginIn, setIsLogginIn,
+      isError,
     } = useContext(UIContext);
   
     const {
@@ -39,6 +40,7 @@ function AppContent() {
       isMounted.current = true;
       // Auth state changed
       const unsubscribe = onAuthStateChanged(auth, async (user) => {
+        setIsLogginIn(true);
         if (user && isMounted.current) {
           // User is signed in
           const { uid, email } = user;
@@ -92,6 +94,7 @@ function AppContent() {
             isDirty: false,
           }]);
         }
+        setIsLogginIn(false);
       });
   
       // Cleanup
@@ -99,7 +102,7 @@ function AppContent() {
         unsubscribe();
         isMounted.current = false;
       };
-    }, [setUserId, setUserEmail, setProjects]);
+    }, [setUserId, setUserEmail, setProjects, setUserApiKey, setIsLogginIn]);
   
     const updateProjects = useCallback(async () => {
       if (!userId) return;
@@ -109,7 +112,7 @@ function AppContent() {
     
       for (let index = 0; index < updatedProjects.length; index++) {
         const project = updatedProjects[index];
-        if (project.isDirty) {
+        if (project && project.isDirty) {
           if (project.id) {
             await updateProject(userId, project.id, project);
             project.isDirty = false; // Reset dirty flag after update
@@ -163,7 +166,7 @@ function AppContent() {
         setSignUpModalOpen(false);
         setUserEmail(res.user.email);
         setUserId(res.user.uid);
-        setIsLoading(false);
+        setIsLogginIn(false);
         const projectsRes = await getProjects(res.user.uid);
         if (projectsRes.success) {
           setProjects(projectsRes.projects);
@@ -261,13 +264,13 @@ function AppContent() {
           {isError && <ErrorModal isSidebarOpen={isSidebarOpen} />}
 
           <div className="App-main-right-header">
-            <h1 className="App-main-right-header-title">Opexis<span className="App-main-right-header-title-span">GPT</span></h1>
+            {/* <h1 className="App-main-right-header-title">Opexis<span className="App-main-right-header-title-span">GPT</span></h1> */}
           </div>
-
-          <OutputContent />
+          
+          {isLogginIn ? <div style={{marginTop: '5em', marginBottom: '5em'}}> <SimpleLoader /> </div>: <OutputContent />}
 
           <footer className="App-main-footer">
-            <p className="App-main-footer-text">Silas Nevstad</p>  
+            <p className="App-main-footer-text">Silas Nevstad</p>
             <p className="App-main-footer-text">Opexis © 2023</p>
           </footer>
         </main>

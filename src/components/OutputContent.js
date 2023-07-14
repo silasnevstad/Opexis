@@ -23,7 +23,7 @@ function OutputContent() {
     } = useContext(UIContext);
     
     const {
-        input,
+        input, setInput,
         projects, setProjects,
         activeProjectIndex,
     } = useContext(ProjectContext);
@@ -111,7 +111,7 @@ function OutputContent() {
     
     const onNext = async (answersString) => {
         setLoading(true);
-    
+    // if it works clear the input
         try {
             const newProject = projects[activeProjectIndex];
             newProject.finishedState = 'generate';
@@ -124,6 +124,7 @@ function OutputContent() {
                     outputFiles: response.arguments.files,
                     messages: response.messages
                 });
+                setInput('');
             } else {
               setIsError(true);
             }

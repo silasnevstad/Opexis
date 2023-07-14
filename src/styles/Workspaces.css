@@ -2,10 +2,10 @@
     display: flex;
     flex-direction: column;
     width: 16%;
-    height: 100%;
+    height: 100vh;
     position: fixed; 
+    overflow-y: hidden;
 }
-
 
 @media (max-width: 2000px) {
     .workspace-main {
@@ -44,6 +44,7 @@
     align-items: center;
     padding: 0rem 0.1rem;
     padding-left: 0.5rem;
+    height: 7%;
     gap: 0.5rem;
 }
 
@@ -78,19 +79,29 @@
 }
 
 .workspaces {
-    /* position: absolute; */
-    /* top: 0; */
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     width: 100%;
+    height: 80%;
     gap: .5rem;
-    margin-top: .3rem;
-    overflow-y: auto;
-    max-height: 75%;
+    overflow-y: scroll;
     scrollbar-width: none;
     -ms-overflow-style: none;
+}
+
+.workspaces-divider {
+    width: 95%;
+    height: 1px;
+    background-color: #555;
+    margin: 0.5rem 0rem;
+}
+
+.workspaces-big-divider {
+    width: 95%;
+    height: 150px;
+    /* background-color: #555; */
+    margin: 1.5rem 0rem;
 }
 
 .workspaces::-webkit-scrollbar {
@@ -252,13 +263,16 @@
     display: flex;
     flex-direction: row;
     gap: 0.5rem;
-    margin-left: 0.5rem;
+    padding-top: 2.5rem;
+    /* margin-left: 0.5rem; */
+    /* background-color: #; */
 }
   
 .App-main-left-footer-text {
     font-size: 1.1rem;
     font-weight: 700;
     padding: .4rem .6rem;
+    margin-left: 0.3em;
     color: #eee;
     background-color:  #6584d5; /* #5D7AC5; */
     box-shadow: 0.1em 0.1em 0.6em 0.2em #7497F344;
@@ -367,6 +381,10 @@
 
     .App-main-left-bottom-button .feather {
         color: #fff;
+    }
+
+    .App-main-left-footer {
+        background-color: #313131;
     }
 
     .App-main-left-footer-text {

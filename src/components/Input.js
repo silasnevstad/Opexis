@@ -12,8 +12,7 @@ const Input = ({ onSetup, onCodeNext }) => {
     const prompt = project.prompt;
     const textareaRef = useRef(null);
     const placeholder = state === "generate" ?
-        "Any changes you'd like to make?" :
-        window.innerWidth > 600 ? "What do you want to build? (Be as specific as you want)" : "What do you want to build?";
+        "Any changes you'd like to make?" : "What would you like to build?";
 
     useEffect(() => {
         setInput(prompt);

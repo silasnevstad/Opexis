@@ -47,12 +47,10 @@ const Workspaces = ({ createNewProject, handleDeleteProject, onClose }) => {
                 </div>
             </div>
 
-            <div className="workspaces">
-                {/*  reverse projects */}
-                
+            <div className="workspaces">   
                 {[...projects].map((project, index) => ( //.sort((a, b) => b.lastModified - a.lastModified)
+                    project && (
                     <div
-                    // if this project is the active project, add the active class to it (index might not be the same as activeProjectIndex because of sorting)
                         className={`workspaces-workspace ${index === activeProjectIndex ? 'active' : ''}`}
                         key={project.id}
                         onClick={() => handleSetActiveProject(index)}
@@ -77,7 +75,8 @@ const Workspaces = ({ createNewProject, handleDeleteProject, onClose }) => {
                         </div>} 
                         {/* <svg onClick={() => updateProjectName(index)} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-check"><polyline points="20 6 9 17 4 12"></polyline></svg> */}
                     </div>
-                ))}
+                )))}
+                 <div className="workspaces-big-divider"></div>     
             </div>
 
 

@@ -9,6 +9,7 @@
   max-height: 100vh;
   background-color: #232323;
   position: relative;
+  overflow: hidden;
 }
 
 .overlay {
@@ -24,7 +25,7 @@
 .App-main-left {
   width: 16%;
   height: 100vh;
-  max-height: 100vh;
+  /* max-height: 100vh; */
   background-color: #232323;
   position: relative;
   z-index: 100;

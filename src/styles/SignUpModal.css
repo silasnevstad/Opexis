@@ -66,6 +66,7 @@
 
 .big-modal-title.active {
     background-color: #353535;
+    font-weight: 500;
 }
 
 .big-modal-title:hover {
@@ -535,13 +536,12 @@
     font-size: 1.25rem;
     font-weight: 700;
     border: 1px solid #666;
-    border-radius: 12px;
     background-color: #6985CA;
     color: #eee;
     cursor: pointer;
     position: relative;
     display: inline-block;
-    border-radius: 1em;
+    border-radius: .5em;
     transition: all .2s;
     border: none;
 }
@@ -562,7 +562,7 @@
     display: inline-block;
     height: 100%;
     width: 100%;
-    border-radius: 100px;
+    /* border-radius: .5em; */
     position: absolute;
     top: 0;
     left: 0;
@@ -705,7 +705,7 @@
 
 @media (prefers-color-scheme: light) {
     .big-modal {
-        background-color: #424242;
+        background-color: #cfcfcf;
         color: #222;
     }
 
@@ -731,11 +731,19 @@
 
     .big-modal-title.active {
         color: #222;
-        background-color: #c5c5cf;
+        background-color: #aaa;
     }
 
     .big-modal-title .feather {
         color: #222;
+    }
+
+    .big-modal-body-text {
+        color: #0000007f;
+    }
+
+    .small-modal-body-text {
+        color: #0000007f;
     }
 
     .feather-x {
@@ -778,12 +786,12 @@
         display: inline-block;
         height: 100%;
         width: 100%;
-        border-radius: 100px;
+        border-radius: 0.5em;
         position: absolute;
         top: 0;
         left: 0;
         z-index: -1;
-        transition: all .4s;
+        transition: all .2s;
     }
        
     .small-modal-button::after {

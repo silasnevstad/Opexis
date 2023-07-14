@@ -20,7 +20,11 @@
 
 .App-main-input-search.loading {
     cursor: wait;
-    background-color: #5875BFaf;
+    background-color: #5875BFff;
+}
+
+.App-main-input-search:disabled {
+    color: #ccc;
 }
 
 .App-main-input-search:focus {
