@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react';
 import { UIContext } from '../context/UIContext';
-import emailjs from 'emailjs-com';
+import emailjs from '@emailjs/browser';
 import '../styles/SignUpModal.css'
 
 const ErrorModal = ({isSidebarOpen}) => {
