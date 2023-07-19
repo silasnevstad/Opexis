@@ -150,23 +150,28 @@ function OutputContent() {
         }
     
         const newProject = {...projects[activeProjectIndex], finishedState: 'generate', currentState: 'generate'}; // Cloning the current project
-        setProjects([...projects.slice(0, activeProjectIndex), newProject, ...projects.slice(activeProjectIndex + 1)]);
+        setProjects([...projects.slice(0, activeProjectIndex), newProject, ...projects.slice(activeProjectIndex + 1)]); // Replacing the current project with the cloned one
     
         try {
             const response = await code(newProject.messages, codeString, input, userApiKey);
     
             if (response.type === 'function_call') {
-                const { outputFiles: existingOutputFiles } = projects[activeProjectIndex];
-                const newOutputFiles = { ...existingOutputFiles, ...response.arguments.files };
-    
-                const newOutputFileList = Object.values(newOutputFiles);
-                updateProjectState('generate', {
-                    outputFiles: newOutputFileList,
+                const { outputFiles: existingOutputFiles } = projects[activeProjectIndex]; // Getting the existing output files
+            
+                const mergedOutputFiles = { ...existingOutputFiles };  // Create a copy of the existingOutputFiles
+                for (let filename in response.arguments.files) {  // Iterate through the AI's output files
+                    mergedOutputFiles[filename] = response.arguments.files[filename];  // Update or add files
+                }
+            
+                const newOutputFileList = Object.values(mergedOutputFiles); // Convert the merged files object to an array of files
+            
+                updateProjectState('generate', {  // Updating the project state
+                    outputFiles: newOutputFileList, 
                     messages: response.messages
                 });
             } else {
                 setIsError(true);
-            }
+            }            
         } catch (error) {
             setIsError(true);
         } finally {
