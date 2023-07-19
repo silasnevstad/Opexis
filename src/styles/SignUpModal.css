@@ -97,7 +97,7 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    border-bottom: .5px solid #ffffff3f;
+    /* border-bottom: .5px solid #ffffff3f; */
     padding: 0rem 1rem;
 }
 
@@ -397,18 +397,56 @@
 }
 
 .big-close-button {
+    --shadow: 0 5px 15px 0 #00000026;
+    --shadow-active: 0 5px 5px 0 #00000026;
+    --border-radius-main: 10px;
     position: absolute;
-    right: 5px;
-    top: 5px;
+    top: 10px;
+    right: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: .5rem .5rem;
-    background-color: transparent;
-    color: #FF5E5B;
+    text-align: center;
+    width: 1rem;
+    height: 1rem;
+    color: transparent;
+    font-size: 0;
+    cursor: pointer;
+    background-color: #ff5f5f80;
     border: none;
-    transition: 0.3s ease;
-    z-index: 100;
+    border-radius: var(--border-radius-main);
+    -webkit-border-radius: var(--border-radius-main);
+    -moz-border-radius: var(--border-radius-main);
+    -ms-border-radius: var(--border-radius-main);
+    -o-border-radius: var(--border-radius-main);
+    transition: .2s ease all;
+    -webkit-transition: .2s ease all;
+    -moz-transition: .2s ease all;
+    -ms-transition: .2s ease all;
+    -o-transition: .2s ease all;
+    z-index: 1002;
+}
+
+.big-close-button:hover {
+    width: 1.2rem;
+    height: 1.2rem;
+    font-size: 1rem;
+    color: #ffffff;
+    background-color: #ff5f5fcc;
+    box-shadow: var(--shadow-active);
+    -moz-box-shadow: var(--shadow-active);
+    -webkit-box-shadow: var(--shadow-active);
+}
+
+.big-close-button:active {
+    width: 1.1rem;
+    height: 1.1rem;
+    font-size: .9rem;
+    color: #ffffffde;
+    --shadow-btn-close: 0 3px 3px 0 #00000026;
+    box-shadow: var(--shadow-btn-close);
+    -moz-box-shadow: var(--shadow-btn-close);
+    -webkit-box-shadow: var(--shadow-btn-close);
 }
 
 .feather-x {
@@ -551,7 +589,7 @@
     transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
-   
+/*    
 .small-modal-button:active {
     transform: translateY(-1px);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
@@ -562,7 +600,6 @@
     display: inline-block;
     height: 100%;
     width: 100%;
-    /* border-radius: .5em; */
     position: absolute;
     top: 0;
     left: 0;
@@ -582,7 +619,7 @@
 .small-modal-button:active {
     transform: translateY(0px);
     box-shadow: 0px 0px 0px 0px #ffffff90;
-}
+} */
 
 .small-modal-button-close {
     padding: .65rem 2.2rem;
@@ -695,6 +732,11 @@
     .small-modal-button-close {
         padding: .65rem 1.5rem;
         font-size: 1.25rem;
+    }
+
+    .big-close-button {
+        width: 24px;
+        height: 24px;
     }
 
     .small-close-button {
@@ -821,6 +863,11 @@
     .small-modal .green {
         background-color: #6EEB83;
         color: #222;
+    }
+
+    .big-close-button {
+        background-color: #FF5E5B;
+        color: #fff;
     }
 
     .blue {
